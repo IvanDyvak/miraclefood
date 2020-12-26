@@ -1,0 +1,1005 @@
+/*-------- Generic styles for the page ------------------*/
+
+
+html {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+}
+
+body {
+    font: normal 15px Calibri,Helvetica,Verdana,sans-serif;
+    line-height: 1.8;
+    color: #818181;
+    margin: 0;
+    min-height: 100%;
+}
+section {
+    display:block;
+    position: relative;
+    /*padding:60px;*/
+}
+h2 {
+    font-size: 24px;
+    text-transform: uppercase;
+    color: #303030;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+h4 {
+    font-size: 19px;
+    line-height: 1.375em;
+    color: #303030;
+    font-weight: 400;
+    margin-bottom: 30px;
+}
+/*.backgrd{
+  background: #efecde;
+}*/
+/* ---------------- For sticky header: class="float-panel"  ------------------*/
+.icon-bar1, .icon-bar2, .icon-bar3 {
+  width: 27px;
+  height: 3px;
+  background-color: #fff;
+  margin: 6px 0;
+  transition: 0.4s;
+}
+
+.change .icon-bar1 {
+  -webkit-transform: rotate(-45deg) translate(-7px, 6px);
+  transform: rotate(-45deg) translate(-7px, 6px);
+}
+
+.change .icon-bar2 {opacity: 0;}
+
+.change .icon-bar3 {
+  -webkit-transform: rotate(45deg) translate(-7px, -6px);
+  transform: rotate(45deg) translate(-7px, -6px);
+}
+.navbar-brand {
+    height: auto;
+    padding-left: 30px !important;
+    line-height: 20px;
+}
+
+.navbar .fa{
+    font-size: 1.5em;
+}
+
+#effect { 
+    display: none;
+    margin: auto;
+    width: 240px; 
+    height: 130px; 
+    padding: 0.4em; 
+    position: relative; 
+    background-color: rgb(168 100 32 / 12%);
+    line-height: 24px;
+    /* font-weight: bold; */
+    border-radius: 2%;
+    margin-bottom: 10px;
+    text-align: center;
+    box-shadow: 0px 1px 10px #000000;
+    color: #fff;
+
+}
+  #effect h3 { margin: 0; padding: 0.4em; text-align: center; }
+
+#top_panel {
+    position: relative;
+    /*display: inline-flex;*/
+    width: 100%;
+}
+#top_panel p {
+    font-size: 18px;
+    margin: 0;
+}
+#top_panel p .fa{
+    color: #444;
+    font-size: 20px;
+}
+
+#top_panel .fa{
+    /*padding: 15px;*/
+    font-size: 20px;
+}
+#top_panel .top_panel_wrap{
+    display: flex;
+    height: 35px;
+    align-items: center;
+    justify-content: center;
+}
+#top_panel .top_panel_wrap ul{
+    margin: 0 0 0 auto;
+}
+#top_panel .fa:hover {
+  opacity: 0.7;
+}
+.fa-facebook {
+  color: #3B5998;
+}
+.fa-twitter {
+  color: #55ACEE;
+}
+.fa-instagram {
+  color: #3B5998;
+}
+
+.float-panel {
+    width:100%;
+    position: relative;
+    /*display: flex;*/
+    align-items: center;
+    justify-content: space-between;
+    z-index:300;
+    transform: translateZ(0);
+    transition:all 0.5s; /* Effect for switching from .fixed to static */
+}
+
+.float-panel a {
+    font-size:16px;
+    text-decoration:none;
+    color:#444;
+    display:inline-block;
+    /*padding:10px 20px;*/
+}
+
+/* when class="float-panel fixed" */
+.fixed {
+    box-shadow:0 2px 6px rgba(0,0,0,0.2);
+    /*padding:4px 0;*/
+    animation:fade-in 0.4s;
+    /*opacity:0.9;*/
+    background: rgb(228 155 15);
+    z-index: 100000;
+    margin-left: -15px;
+}
+
+.fixed img {
+    transform: translateX(16%);
+    width: 100px;
+    margin: 10px;
+    border-radius: 8%;
+}
+.fixed .navbar-nav > li > a {
+    /*color: black !important;*/
+    font-size: 15px !important;
+   /* padding-right: 2% !important;*/
+}
+.fixed .navbar-toggle{
+    margin-right: 30px;
+}
+.navbar-header {
+  /*display: flex;*/
+    align-items: center;
+
+}
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+        transform: translateY(-100%);
+    } 
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+            } 
+}
+#modal-10 .button1 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #008CBA;
+}
+#modal-10 .button1:hover {
+    img
+}
+
+#modal-10 .button2 {
+  background-color: white;
+  color: black;
+  border: 2px solid #e7e7e7;
+  float: right;
+  margin-top: -5px;
+}
+#modal-10 .button2:hover {
+  border: 2px solid #008CBA;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+#modal-11 .button1 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #008CBA;
+}
+#modal-11 .button1:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+#modal-11 .button2 {
+  background-color: white;
+  color: black;
+  border: 2px solid #e7e7e7;
+  float: right;
+  margin-top: -5px;
+}
+#modal-11 .button2:hover {
+  border: 2px solid #008CBA;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+
+/* ---------------- For Animation on Scroll ---------------- */
+.slideanim {
+    visibility:hidden;
+    visibility:visible\9;/*For old IE browsers IE6-8 */
+}
+.slideanim.slide{
+    visibility: visible;
+     animation:slide 1s;
+ }
+.slideanim::after {
+    /* useful when its child elements are float:left; */
+    content: "";
+    display: table;
+    clear: both;
+}
+@keyframes slide {
+    0% {
+        opacity: 0;
+        transform: translateY(30%);
+    } 
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    } 
+}
+
+#head{
+    width: 100%;
+    position: relative;
+    margin-top: -20px;
+    height: 20%;
+    margin-bottom: -1px;
+}
+
+
+#wrapper{
+    width: 100%;
+   /* padding: 25px;*/
+    height: auto;
+    position: relative;
+}
+
+
+ .btm{
+  position: relative;
+  display: block;
+  width: 100px;
+  height: 25px;
+  border: 1px solid transparent;
+  color: #fff;
+  background: lime;
+  margin: 0px auto;
+  text-align: center;
+  line-height: 25px;
+  font-size: 2.5rem;
+  border-bottom-left-radius:50px;
+  border-bottom-right-radius:50px;
+  border-top-left-radius:0px;
+  border-top-right-radius:5px;
+  cursor: pointer;
+
+}
+.arrow{
+    animation: shake .7s infinite
+}
+@keyframes shake {
+    0% {
+        transform: translateY(-10%);
+    } 
+    100% {
+        transform: translateY(0);
+            } 
+}
+.arrowActive{
+  color: red
+}
+#company{
+    width: 100%;
+    padding: 0px 0px 25px;
+   /* height: 70vh;*/
+    position: relative;
+    font-size: 20px;
+}
+
+#company:after {
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+    height: 24px;
+    width: 100%;
+    content: "";
+    background-image: url(../img/ua.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    z-index: 10;
+}
+
+#company h2{
+    text-align: center;
+}
+#company h4{
+  padding-left: 2rem;
+    line-height: 1.5em;
+  }
+#company p {
+    padding-left: 20px;
+    background: url(../img/bullet.png) no-repeat 0 4px;
+    line-height: 1.5em;
+    margin: 3.5rem 0;
+}
+
+#company  .flexCenter {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+#company  .chart.gt-50 {
+    background-color: #dc572e;
+}
+#company  .chart {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #e4e4e4;
+    position: relative;
+    margin-left: 7px;
+}
+#company  .gt-50 {
+    clip: rect(0, 30px, 60px, 0);
+}
+
+#company .gt-50 .chart-fill {
+    /*background: #314f77;*/
+    clip: rect(0, 60px, 60px, 30px);
+}
+#company  .chart-fill {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    left: calc(50% - 30px);
+    top: calc(50% - 30px);
+    width: 60px;
+    height: 60px;
+    clip: rect(0, 30px, 60px, 0);
+    /*background: #314f77;*/
+    -webkit-transform: rotate(60deg);
+    -moz-transform: rotate(60deg);
+    -ms-transform: rotate(60deg);
+    -o-transform: rotate(60deg);
+    transform: rotate(60deg);
+}
+#company  .chart-percents {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    left: 50%;
+    top: 50%;
+    width: 40px;
+    height: 40px;
+    background: #eee;
+    margin-top: -20px;
+    margin-left: -20px;
+}
+#company .chart-percents span.value {
+    font-size: 14px;
+}
+ #company  .chart-percents span {
+    display: inline-block;
+    font-family: "Oswald", sans-serif;
+    font-weight: 700;
+    color: #333;
+}
+#company  .chart-percents span.percent {
+    font-size: 12px;
+    margin-left: -2px;
+}
+#company li{
+  margin: 15px 0 15px;
+  list-style-type: none;
+  /*font-size: 20px;*/
+}
+#company ul span{
+  padding-right: 15px
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+#values {
+    width: 100%;
+    height: 100vh;
+    min-height: 630px;
+    position: relative;
+    color: #ffffff;
+    background-size: cover;
+    background-position: center;
+    background-image:url(../img/healthyLifestyle.jpg);
+    background-repeat: no-repeat;
+
+}
+
+#tab2{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 1em 2em;
+    font-size: 20px;
+
+}
+#values .left{
+    position: absolute;
+    bottom: 10%;
+    left: 5%;
+}
+#values .right{
+    position: absolute;
+    bottom: 11%;
+    right: 5%;
+}
+
+.l1{
+  position: relative;
+  width: 3rem;
+  height: .2rem;
+  background-color: #fff;
+  margin-left: -9px;
+  margin-top: 60px;
+}
+.l2{
+  position: relative;
+  width: .2rem;
+  height: 3rem;
+  background-color: #fff;
+  margin-top: -24px;
+}
+.r1{
+  position: relative;
+  float: right;
+  width: .2rem;
+  height: 3rem;
+  background-color: #fff;
+  margin-top: 38px;
+}
+.r2{
+  position: relative;
+  float: right;
+  width: 3rem;
+  height: .2rem;
+  background-color: #fff;
+  margin-right: -9px;
+  margin-top: 60px;
+}
+
+.text-center {
+    text-align:center;
+}
+
+
+#tab3{
+    width: 100%;
+    /*min-height: 86vh;*/
+    border-top: black;
+    padding: 0px 0 20px;
+}
+#tab3 .benefits{
+    height: 230px;
+}
+#tab3 .adv {
+    font-size:5em;
+    color: #e49b0f;
+    padding-top: 50px
+}
+#tab3 h4 {
+    text-transform: uppercase
+}
+#tab3 p {
+    padding-bottom: 10px
+}
+
+
+#tab4{
+    /*background-size: auto;*/
+    color: #333;
+    /* background-image: url(../img/bg1.jpg); */
+    padding: 40px 0px;
+    background: #e7ff0c33;
+}
+
+/* ---------------- For the Responsive Image Grid. For details visit: www.menucool.com/ui/use-image-sprites-in-responsive-image-grids ---------------- */
+
+#rig {
+	max-width:900px;
+	margin:0 auto; /*center aligned*/
+	padding:0;
+	font-size:0; /* Remember to change it back to normal font size if have captions */
+	list-style:none;
+	background-color:none;
+}
+#rig li {
+	display:inline-block;
+	*display:inline;/*for IE6 - IE7*/
+	vertical-align:middle;
+	box-sizing:border-box;
+	margin:0;
+	padding:0;
+      -webkit-transition:all .4s linear;
+    transition:all .4s linear;
+}
+
+/* The wrapper for each item */
+.rig-cell {
+	margin:12px;
+	box-shadow:0 1px 4px rgba(0,0,0,0.4);
+	/*padding:16px;*/
+	border:none;
+	color:#555;
+	background-color:#ecfbc7;
+	text-decoration:none;
+	text-align:center;
+	display:block;
+	position: relative;
+	overflow:hidden;
+    border-radius: 2%
+}
+
+.rig-cell h3 {
+	font-size:18px;
+	font-family:'Oswald', sans-serif;
+	font-weight:normal;
+  color: black;
+  letter-spacing: 1px;
+}
+
+/* If have the image layer */
+.rig-img {
+	display:block;
+	border:none;
+	width:100%;
+	height:0;
+  padding-top:83.461538%;
+	position:relative; 
+  
+}
+
+#rig li:hover  .rig-img{
+    -ms-transform:scale(1.1);
+    -webkit-transform:scale(1.1);
+    transform:scale(1.1);
+}
+
+.rig-img:after{
+	position:absolute;
+	top:20px;right:20px;bottom:20px;left:20px;
+	border:1px solid black;
+	content:'+';
+	color: black;
+	padding-top:14%;
+	font-size:30px;
+	opacity:0;
+	filter:alpha(opacity=0);
+	transition:all 0.3s;
+	transform:scale(0);
+}
+
+#rig li:hover .rig-img:after {
+	opacity:1;
+	transform:scale(1);
+}
+
+/* If have the overlay layer */
+.rig-overlay {
+	position: absolute;
+	display:block;
+	top:0;left:0;bottom:0;right:0;
+	margin:auto;
+	background:white;
+	background-size:50px 50px;
+	opacity:0;
+	filter:alpha(opacity=0);/*For older IE*/
+	transition:all 0.3s;
+}
+#rig li:hover .rig-overlay {
+	opacity:0.5;
+}
+#rig .img1 {
+    display:block;
+    border:none;
+    width:100%;
+    height:0;
+    padding-top:83.461538%;
+    background-size:cover;
+    background-color:white;
+    background-image:url(../img/potato.jpg);
+    background-repeat:no-repeat;
+    position:relative; /* Make its pseudo :after to be relative to it. */
+}
+#rig .img2 {
+    display:block;
+    border:none;
+    width:100%;
+    height:0;
+    padding-top:83.461538%;
+    background-size:cover;
+    background-color:white;
+    background-image:url(../img/fish.jpg);
+    background-repeat:no-repeat;
+    position:relative; /* Make its pseudo :after to be relative to it. */
+}
+#rig .img3 {
+    display:block;
+    border:none;
+    width:100%;
+    height:0;
+    padding-top:83.461538%;
+    background-size:cover;
+    background-color:white;
+    background-image:url(../img/meat.jpg);
+    background-repeat:no-repeat;
+    position:relative; /* Make its pseudo :after to be relative to it. */
+}
+#rig .img4 {
+    display:block;
+    border:none;
+    width:100%;
+    height:0;
+    padding-top:83.461538%;
+    background-size:cover;
+    background-color:white;
+    background-image:url(../img/salad.jpg);
+    background-repeat:no-repeat;
+    position:relative; /* Make its pseudo :after to be relative to it. */
+}
+#rig .img5 {
+    display:block;
+    border:none;
+    width:100%;
+    height:0;
+    padding-top:83.461538%;
+    background-size:cover;
+    background-color:white;
+    background-image:url(../img/soups.jpg);
+    background-repeat:no-repeat;
+    position:relative; /* Make its pseudo :after to be relative to it. */
+}
+#rig .img6 {
+    display:block;
+    border:none;
+    width:100%;
+    height:0;
+    padding-top:83.461538%;
+    background-size:cover;
+    background-color:white;
+    background-image:url(../img/breakfast.jpg);
+    background-repeat:no-repeat;
+    position:relative; /* Make its pseudo :after to be relative to it. */
+}
+#rig .img7 {
+    display:block;
+    border:none;
+    width:100%;
+    height:0;
+    padding-top:83.461538%;
+    background-size:cover;
+    background-color:white;
+    background-image:url(../img/desserts.jpg);
+    background-repeat:no-repeat;
+    position:relative; /* Make its pseudo :after to be relative to it. */
+}
+#rig .img8 {
+    display:block;
+    border:none;
+    width:100%;
+    height:0;
+    padding-top:83.461538%;
+    background-size:cover;
+    background-color:white;
+    background-image:url(../img/special.jpg);
+    background-repeat:no-repeat;
+    position:relative; /* Make its pseudo :after to be relative to it. */
+}
+
+ .btn {
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 15px auto;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  background-color: #fff; 
+  color: black; 
+  border: 2px solid #999 !important;
+}
+.btn:hover {
+  background-color: #f44336;
+  color: tomato;
+}
+
+
+#backtop {
+    position: fixed;
+    left:auto;
+    right: 20px;
+    top:auto;
+    bottom: 65px;
+    outline: none;
+    overflow:hidden;
+    color:#fff;
+    text-align:center;
+    background-color:rgba(49,79,96,0.84);
+    height:40px;
+    width:40px;
+    line-height:40px;
+    font-size:14px;
+    border-radius:2px;
+    cursor:pointer;
+    transition:all 0.3s linear;
+    z-index:999999;
+    opacity:1;
+    display:none;
+        }
+#backtop:hover {
+         background-color:#27CFC3;
+        }
+#backtop.mcOut {
+            opacity:0;
+        }
+#gallery .item{
+    width: 100%;
+    max-height: 600px;
+    /*height: 600px;*/
+}
+
+#tab5 h3{
+    text-align: center;
+}
+#tab5 ul{
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 40px auto;
+    padding: 0;
+}
+#tab5 ul li{
+    margin: 5px auto;
+}
+
+footer {
+    display:block;
+    padding:15px 1px;
+    background: #d6f0cd;
+    height: auto;
+}
+footer p {
+    margin-top: 15px
+}
+.search-form .form-group {
+ /* float: right !important;*/
+  transition: all 0.35s, border-radius 0s;
+/*  width: 32px;
+  height: 33px;*/
+  background-color: #fff;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+  /*border-radius: 25px;*/
+  border: 1px solid #ccc;
+  margin-top: 10px;
+}
+.search-form .form-group input.form-control {
+  padding-right: 20px;
+  border: 0 none;
+  background: transparent;
+  box-shadow: none;
+  display:block;
+}
+.search-form .form-group input.form-control::-webkit-input-placeholder {
+  display: none;
+}
+.search-form .form-group input.form-control:-moz-placeholder {
+  /* Firefox 18- */
+  display: none;
+}
+.search-form .form-group input.form-control::-moz-placeholder {
+  /* Firefox 19+ */
+  display: none;
+}
+.search-form .form-group input.form-control:-ms-input-placeholder {
+  display: none;
+}
+.search-form .form-group:hover,
+.search-form .form-group.hover {
+  width: 100%;
+  border-radius: 4px 25px 25px 4px;
+}
+.search-form .form-group span.form-control-feedback {
+  position: absolute;
+  top: -1px;
+  right: -2px;
+  z-index: 2;
+  display: block;
+  width: 34px;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  color: #3596e0;
+  left: initial;
+  font-size: 14px;
+}
+
+.sides h2, h5,
+.fish h2, h5,
+.meat h2, h5,
+.salads h2, h5,
+.soups h2, h5,
+.breakfast h2, h5,
+.dessert h2, h5,
+.special h2, h5{
+    text-align: center;
+}
+
+#sides,
+#fish,
+#meat,
+#salads,
+#soups,
+#breakfast,
+#dessert,
+#special{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+#sides li,
+#fish li,
+#meat li,
+#salads li,
+#soups li,
+#breakfast li,
+#dessert li,
+#special li{
+    font-size: 2.5rem;
+    padding: 1rem;
+}
+
+.flip-menu{
+    margin: 30px 0 0;
+}
+.flip-item-wrap{
+    width: 25%;
+    height: auto;
+    float: left;
+    position:relative;
+    -webkit-perspective:800px;
+    -moz-perspective:800px;
+    -ms-perspective:800px;
+    -o-perspective:800px;
+    perspective:800px;
+}
+@media screen and (min-width: 1280px) {
+    .flip-item-wrap{
+        width: 16.6%;
+    }
+}
+@media screen and (max-width: 979px) {
+    .flip-item-wrap{
+        width: 33.3%;
+    }
+}
+@media screen and (max-width: 639px) {
+    .flip-item-wrap{
+        width: 50%;
+    }
+}
+@media screen and (max-width: 379px) {
+    .flip-item-wrap{
+        width: 100%;
+    }
+}
+.flip-item-wrap img{
+    width:100%;
+    height:auto;
+    display:block;
+    margin:0;
+}
+.flip-item-wrap input{
+    display: none;
+}
+.flip-item-wrap .fake-image{
+    visibility: hidden;
+}
+.flip-item{
+    display: block;
+    width:100%;
+    height:100%;
+    float:left;
+    position:absolute;
+    top:0;
+    left:0;
+    cursor:pointer;
+    color:#fff;
+    -webkit-transform-style:preserve-3d;
+    -moz-transform-style:preserve-3d;
+    -ms-transform-style:preserve-3d;
+    -o-transform-style:preserve-3d;
+    transform-style:preserve-3d;
+    -webkit-transition:-webkit-transform 1s;
+    -moz-transition:   -moz-transform 1s;
+    -o-transition:     -o-transform 1s;
+    transition:        transform 1s;
+}
+.flip-item figure{
+    display:block;
+    position:absolute;
+    width:100%;
+    height:100%;
+    margin:0;
+    -webkit-backface-visibility:hidden;
+    -moz-backface-visibility:hidden;
+    -ms-backface-visibility:hidden;
+    -o-backface-visibility:hidden;
+    backface-visibility:hidden;
+}
+.flip-item .back{
+    width:100%;
+    display:block;
+    margin:0;
+    -webkit-transform:rotateY( 180deg );
+    -moz-transform:rotateY( 180deg );
+    -ms-transform:rotateY( 180deg );
+    -o-transform:rotateY( 180deg );
+    transform:rotateY( 180deg );
+}
+.flipper:checked + .flip-item{
+    -webkit-transform:rotateY( 180deg );
+    -moz-transform:rotateY( 180deg );
+    -ms-transform:rotateY( 180deg );
+    -o-transform:rotateY( 180deg );
+    transform:rotateY( 180deg );
+}
+.flip-item-desc{
+    background: rgba(0,0,0,0.2);
+    width:90%;
+    height:90%;
+    padding:5%;
+    position:absolute;
+    top: 0;
+    left: 0;
+    text-shadow:1px 2px 1px rgba(0,0,0,0.9);
+    overflow:hidden;
+}
+.flip-item-title{
+    font-size: 1.5em;
+    margin: 1em 0 0.8em;
+}
