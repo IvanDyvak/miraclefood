@@ -250,7 +250,7 @@ h4 {
 @keyframes slide {
     0% {
         opacity: 0;
-        transform: translateY(30%);
+        transform: translateY(15%);
     } 
     100% {
         opacity: 1;
@@ -774,10 +774,18 @@ h4 {
 #backtop.mcOut {
             opacity:0;
         }
+#gallery {
+    margin: 40px auto;
+}
 #gallery .item{
     width: 100%;
     max-height: 600px;
     /*height: 600px;*/
+}
+
+#tab5{
+    background: #f9f1f1;
+    padding: 20px 0;
 }
 
 #tab5 h3{
