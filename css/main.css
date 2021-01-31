@@ -155,7 +155,7 @@ h4 {
     /*padding:4px 0;*/
     animation:fade-in 0.4s;
     /*opacity:0.9;*/
-    background: rgb(228 155 15);
+    background: linear-gradient(to right, #a80f19 0%, #860f11 81%, #630102 100%);
     z-index: 100000;
     margin-left: -15px;
 }
@@ -726,6 +726,42 @@ h4 {
     background-repeat:no-repeat;
     position:relative; /* Make its pseudo :after to be relative to it. */
 }
+#rig .img9 {
+    display:block;
+    border:none;
+    width:100%;
+    height:0;
+    padding-top:83.461538%;
+    background-size:cover;
+    background-color:white;
+    background-image:url(../img/diet.jpg);
+    background-repeat:no-repeat;
+    position:relative; /* Make its pseudo :after to be relative to it. */
+}
+#rig .img10 {
+    display:block;
+    border:none;
+    width:100%;
+    height:0;
+    padding-top:83.461538%;
+    background-size:cover;
+    background-color:white;
+    background-image:url(../img/pic_11.jpg);
+    background-repeat:no-repeat;
+    position:relative; /* Make its pseudo :after to be relative to it. */
+}
+#rig .img11 {
+    display:block;
+    border:none;
+    width:100%;
+    height:0;
+    padding-top:83.461538%;
+    background-size:cover;
+    background-color:white;
+    background-image:url(../img/craft.jpg);
+    background-repeat:no-repeat;
+    position:relative; /* Make its pseudo :after to be relative to it. */
+}
 
  .btn {
   padding: 16px 32px;
@@ -871,7 +907,10 @@ footer p {
 .soups h2, h5,
 .breakfast h2, h5,
 .dessert h2, h5,
-.special h2, h5{
+.special h2, h5,
+.diet h2, h5,
+.craft h2, h5,
+.banquet h2, h5{
     text-align: center;
 }
 
@@ -882,7 +921,10 @@ footer p {
 #soups,
 #breakfast,
 #dessert,
-#special{
+#special,
+#diet,
+#craft,
+#banquet{
     margin-top: 50px;
     display: flex;
     flex-direction: column;
@@ -896,10 +938,27 @@ footer p {
 #soups li,
 #breakfast li,
 #dessert li,
-#special li{
+#special li,
+#diet li,
+#craft li,
+#banquet li{
     font-size: 2.5rem;
     padding: 1rem;
 }
+.craft_info{
+    text-align: center;
+    background: #c65252;
+    width: 100%;
+    color: #f5f5f5;
+    border-radius: 1%;
+    font-size: 16px;
+    padding: 4px;
+    margin-top: 50px;
+}
+.craft_info ul{
+    list-style-type: none;
+}
+
 
 .flip-menu{
     margin: 30px 0 0;
@@ -1010,4 +1069,134 @@ footer p {
 .flip-item-title{
     font-size: 1.5em;
     margin: 1em 0 0.8em;
+}
+
+.fireworks_cover {
+    position: absolute;
+    z-index: 9;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+.fireworks_cover .firework-1 {
+    top: 60%;
+    left: 15%;
+    width: 120px;
+    height: 120px;
+    animation-delay: .8s;
+}
+.fireworks_cover .firework {
+    position: absolute;
+    position: absolute;
+    background-image: url(../img/download.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    animation: firework-pulse 3s ease-in-out infinite;
+    width: 50px;
+    height: 50px;
+}
+.fireworks_cover .firework-2 {
+    opacity: 0.4;
+    background-image: url(../img/download.png);
+    animation-delay: .5s;
+    width: 120px;
+    height: 120px;
+    top: 5%;
+    right: 20%;
+}
+.fireworks_cover .firework-3 {
+    animation-delay: 1s;
+    background: url(../img/download.png);
+    width: 120px;
+    height: 120px;
+    top: 20%;
+    left: 5%;
+    background-repeat: no-repeat;
+}
+.fireworks_cover .firework-4 {
+    top: 50%;
+    right: 5%;
+    width: 120px;
+    height: 120px;
+}
+.fireworks_cover {
+    position: absolute;
+    z-index: 9;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+.fireworks_cover .firework {
+    position: absolute;
+    position: absolute;
+    background-image: url(../img/download.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    animation: firework-pulse 3s ease-in-out infinite;
+    width: 50px;
+    height: 50px;
+}
+
+.fireworks_cover .firework-4 {
+    top: 50%;
+    right: 5%;
+    width: 120px;
+    height: 120px;
+}
+
+.fireworks_cover .firework-1 {
+    top: 60%;
+    left: 15%;
+    width: 120px;
+    height: 120px;
+    animation-delay: .8s;
+}
+
+.fireworks_cover .firework-2 {
+    opacity: 0.4;
+    background-image: url(../img/download.png);
+    animation-delay: .5s;
+    width: 120px;
+    height: 120px;
+    top: 5%;
+    right: 20%;
+}
+
+.fireworks_cover .firework-3 {
+    animation-delay: 1s;
+    background: url(../img/download.png);
+    width: 120px;
+    height: 120px;
+    top: 20%;
+    left: 5%;
+    background-repeat: no-repeat;
+}
+
+@keyframes firework-pulse {
+    0% {
+        transform: scale(0);
+        opacity: 1
+    }
+    5% {
+        opacity: 1
+    }
+    90% {
+        transform: scale(1.8)
+    }
+    100% {
+        opacity: 0
+    }
+}
+.image_wrap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.image_wrap a{
+    padding: 10px 15px;
+    margin-top: 30px;
 }

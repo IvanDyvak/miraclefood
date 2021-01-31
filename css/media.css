@@ -1,3 +1,19 @@
+@media (min-width: 1200px){
+    #rig li:nth-child(10){
+        margin-left: 15%
+    }
+}
+/*@media (min-width: 992px){*/
+/*    #rig li:nth-child(9){*/
+/*        margin-left: 12%*/
+/*    }*/
+/*}*/
+@media (max-width: 992px){
+    #rig li:last-child{
+        margin-left: 25%
+    }
+}
+
 @media (min-width: 1140px) {
 .float-panel a {
     font-size: 20px;
@@ -120,7 +136,10 @@
     #soups,
     #breakfast
     #dessert,
-    #special{
+    #special,
+    #diet,
+    #craft,
+    #banquet{
         align-items: start;
     }
     #sides li,
@@ -130,7 +149,10 @@
     #soups li,
     #breakfast li,
     #dessert li,
-    #special li{
+    #special li,
+    #diet li,
+    #craft li,
+    #banquet li{
         font-size: 1.8rem;
     }
 }
