@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style1.css">
+    <meta charset=UTF-8>
+    <title>Double infinity</title>
+    <style>
+        body{
+            color: #0b0b0b;
+        }
+        p{
+            display: inline-block;
+        }
+    </style>
+
+<body>
+<div>
+    <p id="day">Today is</p>
+    <p id="demo"></p>
+    <p id="year"></p>
+</div>
+
+<div>
+    <p id="day1"></p>
+    <p id="demo"></p>
+    <p id="year"></p>
+</div>
+
+<script>
+    var d = new Date();
+    var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    document.getElementById("demo").innerHTML = months[d.getMonth()];
+    var f = new Date();
+    document.getElementById("day").innerHTML = "Today is " + f.getDate();
+    var y = new Date();
+    document.getElementById("year").innerHTML = y.getFullYear();
+</script>
+
+<script>
+    var d = new Date();
+    var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    document.getElementById("demo").innerHTML = months[d.getMonth()];
+    var f = new Date();
+    document.getElementById("day1").innerHTML = "Tomorrow is " + f.getDate();
+    var y = new Date();
+    document.getElementById("year").innerHTML = y.getFullYear();
+</script>
+
+
+
+
+</body>
+</html>

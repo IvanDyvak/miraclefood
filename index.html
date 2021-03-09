@@ -1,544 +1,331 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Здорова їжа на замовлення</title>
-  <meta name="keywords" content="натуральні продукти, м'ясо, овочі, фрукти, зелень, органічні продукти, здорова їжа, горіхи">
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
-    <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">-->
-    <link href="css/main.css" rel="stylesheet" />
-    <link rel="stylesheet" href="css/slider.css" />
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/media.css">
-    <link rel="stylesheet" href="css/cart.css" type="text/css">
-    <link rel="stylesheet" href="css/jquery-ui-1.10.4.custom.css">
-    <link rel="stylesheet" href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
-         >
-    <link rel="stylesheet" href="css/component.css" />
-    <script type="text/javascript" src="js/modernizr.custom.79639.js"></script>
+    <meta charset="UTF-8">
+    <title>Recipe Book</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link href="img/favicon.ico" rel="shortcut icon">
+    <!--	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">-->
+    <!--	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+          integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 </head>
 <body>
+<div id="wrapper">
+    <div class="content">
+        <div id="overlay"></div>
+        <div id="overlaySecond"></div>
+        <div class="wrapper">
+            <div class="topLine">
+                <p>
+                    <script language="Javascript">
+                        var dayNames = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
+                        var monthNames = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+                        var now = new Date();
+                        document.write(dayNames[now.getDay()] + ", " + monthNames[now.getMonth()] + " " + now.getDate() + ", " + now.getFullYear());
+                    </script>
+                </p>
+            </div>
+            <nav class="navbar navbar-expand-md bg-orange navbar-dark">
+                <a class="navbar-brand" href="#">
+                    <div class="logo"><img src="img/logo.png" class="img-responsive" alt="Logo">
+                    </div>
+                </a>
 
-    <div id="backtop">&#9650;</div>
-    <div id="top_panel">
-        <div class="container">
-            <div class="col-xs-12 col-sm-12 col-lg-12">
-                <div class="top_panel_wrap">
-                    <p><i class="fa fa-phone" aria-hidden="true"></i> 098 911-33-75, 067 530-46-17</p>
-    <!--                <ul class="list-inline text-left col-xs-6 col-sm-6 col-lg-6">-->
-    <!--                    <li class="md-trigger" data-modal="modal-10"><a href="#"><i class="fa fa-sign-in"></i> <span>Увійти</span></a></li>-->
-    <!--                    <li class="md-trigger" data-modal="modal-11"><a href="#"><i class="fa fa-user"></i> <span>Зареєструватись</span></a></li>-->
-    <!--                   &lt;!&ndash;  <li><p>Корисно! Смачно! Просто!</p></li> &ndash;&gt;-->
-    <!--                </ul>-->
-                    <ul class="list-inline">
-                        <li><a href="https://www.facebook.com/people/%D0%94%D0%B8%D0%B2%D0%BE-%D0%87%D0%B6%D0%B0/100061208319629"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="http://twitter.com"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="http://instagram.com/miracle_food.d"><i class="fa fa-instagram"></i></a></li>
+                <div class="navbar navbar-form">
+                    <div class="navbar login">
+                        <div class="login_sign">
+                            <i class="login_signin fa fa-sign-in-alt"></i>
+                            <i class="login_signup fa fa-user-plus"></i>
+                        </div>
+                    </div>
+                    <ul class="nav navbar-nav">
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="dropdown09" data-toggle="dropdown"
+                               aria-haspopup="true" aria-expanded="false"><span class="flag-icon flag-icon-us"> </span>
+                                EN</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdown09">
+                                <a class="dropdown-item" href="#ua"><span class="flag-icon flag-icon-fr"> </span> UA</a>
+                            </div>
+                        </li>
                     </ul>
                 </div>
-            </div>
-        </div>
-    </div>
-    <div class="row" style="background: #dc572e">
-        <div class="col-xs-12 col-sm-12 col-lg-12">
-            <div class="navbar navbar-inverse">
-                    <div class="float-panel" data-top="0" data-scroll="50">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar" onclick="myFunction(this)">
-                                <div class="icon-bar1"></div>
-                                <div class="icon-bar2"></div>
-                                <div class="icon-bar3"></div>
-                            </button>
-                            <a class="navbar-brand" href="/">
-                                <img src="img/logo.jpg" alt="" class="img-responsive">
-                            </a>
-                        </div>
-                        <div class="navbar-collapse collapse" id="myNavbar">
-                            <ul class="nav navbar-nav navbar-right">
-                                <li><a href="#tab1">Про нас</a></li>
-                                <li><a href="#tab2">Цінності</a></li>
-                                <li><a href="#tab3">Переваги</a></li>
-                                <li><a href="#tab4">Послуги</a></li>
-                                <li><a href="gallery/">Фото</a></li>
-                                <li class="phone"><a href="#">Контакти</a></li>
-                            </ul>
-                        </div>
 
-                        <div class="toggler">
-                             <div id="effect" >
-                                <h3>Контакти</h3>
-                                <p>+38 098 911-33-75 <br>+38 067 530-46-17 <br>idmshef@gmail.com</p>
-                            </div>
-                        </div>
-                    </div>
-            </div>
-        </div>
-    </div>
-    <section id="head" >
-        <div class=" demo"><!-- container -->
-
-            <div id="slider" class="sl-slider-wrapper">
-
-                <div class="sl-slider">
-                
-                    <div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
-                        <div class="sl-slide-inner">
-                            <div class="bg-img bg-img-1"></div>
-                            <h2>Смачна домашня їжа</h2>
-                            <blockquote><p>Коли хочеться поласувати смачненьким, а на приготування немає часу чи можливості, вихід є! Ми пропонуємо послуги приготування ваших улюблених страв.</p></blockquote>
-                        </div>
-                    </div>
-                    
-                    <div class="sl-slide" data-orientation="vertical" data-slice1-rotation="10" data-slice2-rotation="-15" data-slice1-scale="1.5" data-slice2-scale="1.5">
-                        <div class="sl-slide-inner">
-                            <div class="bg-img bg-img-2"></div>
-                            <h2>Святкові страви</h2>
-                            <blockquote><p>День народження? Корпоратив? Фуршет? Залиште це для наших професіоналів, котрі мають досвід обслуговування різноманітних заходів. Ми подбаємо, щоб ваші гості надовго запам'ятали святковий стіл за вишуканість і смак.</p></blockquote>
-                        </div>
-                    </div>
-                    
-                    <div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="3" data-slice2-rotation="3" data-slice1-scale="2" data-slice2-scale="1">
-                        <div class="sl-slide-inner">
-                            <div class="bg-img bg-img-3"></div>
-                            <h2>Послуги шеф-кухаря</h2>
-                            <blockquote><p>Коли необхідно влаштувати особливий прийом для гостей, провести подію на найвищому рівні допоможе наш шеф-кухар, у якого за плечима більше десяти років роботи в елітних сім'ях. Він уміє частувати ситно й смачно.</p><cite></cite></blockquote>
-                        </div>
-                    </div>
-                </div><!-- /sl-slider -->
-
-                <div id="nav-dots" class="nav-dots">
-                    <span class="nav-dot-current"></span>
-                    <span></span>
-                    <span></span>
-<!--                    <span></span>-->
-<!--                    <span></span>-->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                    <ul class="nav navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">What's new</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Your collection</a>
+                        </li>
+                    </ul>
                 </div>
 
-            </div><!-- /slider-wrapper -->
+            </nav>
+        </div>
+        <div class="navbar_form_sign_in fadeInDown">
+
+            <div id="formContent">
+
+                Login Form
+                <form class="form-horizontal" action='' method="POST">
+                    <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
+                    <input type="text" id="login_password" class="fadeIn third" name="login" placeholder="password">
+                    <input type="submit" class="fadeIn fourth" value="Log In">
+                </form>
+
+                <div id="formFooter">
+                    <a class="underlineHover" href="#">Forgot Password?</a>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="navbar_form_sign_up fadeInDown">
+
+            <form class="form-horizontal" action='' method="POST">
+                <fieldset>
+                    <div class="control-group">
+                        <!-- Username -->
+                        <label class="control-label"  for="username">Username</label>
+                        <div class="controls">
+                            <input type="text" id="username" name="username" placeholder="" class="input-xlarge">
+                            <!--							<p class="help-block">Username can contain any letters or numbers, without spaces</p>-->
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <!-- E-mail -->
+                        <label class="control-label" for="email">E-mail</label>
+                        <div class="controls">
+                            <input type="text" id="email" name="email" placeholder="" class="input-xlarge">
+                            <!--							<p class="help-block">Please provide your E-mail</p>-->
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <!-- Password-->
+                        <label class="control-label" for="password">Password</label>
+                        <div class="controls">
+                            <input type="password" id="password" name="password" placeholder="" class="input-xlarge">
+                            <!--							<p class="help-block">Password should be at least 4 characters</p>-->
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <!-- Password -->
+                        <label class="control-label"  for="password_confirm">Password (Confirm)</label>
+                        <div class="controls">
+                            <input type="password" id="password_confirm" name="password_confirm" placeholder="" class="input-xlarge">
+                            <!--							<p class="help-block">Please confirm password</p>-->
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <!-- Button -->
+                        <div class="controls">
+                            <button class="btn btn-light">Register</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
 
         </div>
-    </section>
-    
-
-    <div id="wrapper">
-<!--        <div class="row">-->
-<!--            <div class="wrap">-->
-<!--                <div class="col-xs-8 col-sm-8 col-lg-8">-->
-<!--                    <div class="md-modal md-effect-10" id="modal-10">-->
-<!--                        <div class="md-content">-->
-<!--                            <button class="md-close button2">&#10006</button>-->
-<!--                            <div>-->
-<!--                            <form action="/action_page.php"> -->
-<!--                            <div class="form-group">-->
-<!--                            <label for="email">Email:</label>-->
-<!--                            <input type="email" class="form-control" id="email" placeholder="Введіть свою електронну адресу" name="email">-->
-<!--                            </div>-->
-<!--                            <div class="form-group">-->
-<!--                            <label for="pwd">Пароль:</label>-->
-<!--                            <input type="password" class="form-control" id="pwd" placeholder="Введіть пароль" name="pwd">-->
-<!--                            </div>-->
-<!--                            <div class="checkbox">-->
-<!--                            <label><input type="checkbox" name="remember"> Запам'ятати мене</label>-->
-<!--                            </div>-->
-<!--                            <button type="submit" class="btn btn-default button1">Увійти</button>-->
-<!--                            </form>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>  -->
-<!--                    <div class="md-modal md-effect-11" id="modal-11">-->
-<!--                        <div class="md-content">-->
-<!--                            <button class="md-close button2">&#10006</button>-->
-<!--                            <div>-->
-<!--                            <form action="/action_page.php">-->
-<!--                            <div class="form-group">-->
-<!--                            <label for="name">Ваше ім'я</label>-->
-<!--                            <input type="name" class="form-control" id="name" placeholder="Введіть своє ім'я" name="name">-->
-<!--                            </div>                                -->
-<!--                            <div class="form-group">-->
-<!--                            <label for="email">Email:</label>-->
-<!--                            <input type="email" class="form-control" id="email1" placeholder="Введіть свою електронну адресу" name="email">-->
-<!--                            </div>-->
-<!--                            <div class="form-group">-->
-<!--                            <label for="pwd">Пароль:</label>-->
-<!--                            <input type="password" class="form-control" id="pwd1" placeholder="Введіть пароль" name="pwd">-->
-<!--                            </div>-->
-<!--                            <button type="submit" class="btn btn-default button1">Зареєструватись</button>-->
-<!--                            </form>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>        -->
-<!--                -->
-<!--                    <div class="md-overlay"></div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-        
-
-        <section id="company">
-            <div class="row" id="tab1">
+        <section id="about">
+            <div class="container">
                 <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <div class="btm">
-                            <span><i class="fa fa-angle-double-down arrow"></i></span>
-                        </div>
+                    <div class="col-12 text-center">
+                        <h1>
+                            Your Recipes<br><span class="colored">In One Place</span>
+                        </h1>
                     </div>
                 </div>
-                <div class="col-xs-12 col-md-12 col-lg-12">
-                    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 company slideanim">
-                        <h2>Про нашу команду</h2>
-                        <p>Ми любимо готувати. Любимо з простих інгредієнтів створювати маленький шедевр. Це неймовірне відчуття, коли політ фантазії та натхнення дарують неабияке задоволення. Задоволення від вдалої роботи, від радісних очей клієнтів, від простої фрази "Це було смачно".</p>
-         
-                 
-                        <p>Окрім любові до кулінарії, нас об'єднує глибоке переконання, що смачна їжа має бути здоровою. Насправді, харчуватися повноцінно та якісно - не складно. Просто потрібно зробити цей підхід нормою життя.</p>
-                        <p>Замовляючи їжу в нас, ви не будете хвилюватися за свіжість продуктів та за дотримання санітарно-гігієнічних норм під час приготування страв. Ми схиблені на чистоті, і в цьому плані не приймаємо жодних компромісів. Тому просто насолоджуйтесь життям, а про смаколики подбаємо ми!</p>
+                <div class="row">
+                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 about">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusamus ad aliquid animi
+                            aperiam aut corporis dicta dolor, doloremque eaque et excepturi facilis harum hic, id ipsum
+                            laborum laudantium molestias nihil non numquam quibusdam reiciendis rem, repellat
+                            reprehenderit rerum saepe similique vel vero voluptatem. Architecto asperiores atque cumque
+                            dolor error expedita odit sed temporibus? Dolore dolorem expedita nobis omnis quis?</p>
                     </div>
-                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                            <div class="flexCenter slideanim">
-                                <div class="chart gt-50" data-percent="100">
-                                    <div class="chart-fill" style="transform: rotate(360deg);">
-                                    </div>
-                                    <div class="chart-percents flexCenter">
-                                        <div class="chart-percents-wrapper">
-                                            <span class="value">100</span>
-                                            <span class="percent">%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <h4>Ставимо перед собою максимальні вимоги, щоб нас цінували та рекомендували за:</h4>
-                                <ul>
-                                    <li><span><i class="fa fa-check-square-o"></i></span>відповідальність</li>
-                                    <li><span><i class="fa fa-check-square-o"></i></span>якість товарів</li>
-                                    <li><span><i class="fa fa-check-square-o"></i></span>порядність</li>
-                                    <li><span><i class="fa fa-check-square-o"></i></span>готовність іти назустріч</li>
-                                </ul>
-                            </div>
-                        </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 about">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet consequatur eligendi et
+                            expedita ipsa laborum, necessitatibus nemo officiis optio repudiandae veniam veritatis.
+                            Aliquam asperiores esse porro similique. Aut corporis magni modi molestiae perspiciatis. Ab
+                            animi at commodi consequuntur deleniti deserunt eaque est eum id in ipsum iusto libero
+                            mollitia nam, omnis provident quas repellat sapiente sit temporibus velit vero
+                            voluptates?</p>
+                    </div>
                 </div>
             </div>
-
         </section>
 
-        <section  id="values">
+        <section id="tips">
             <div class="container">
-                 <div class="row" id="tab2">
-                    <div class=" text-center slideanim"><!-- col-xs-12 col-md-12 col-lg-12 -->
-                        <h2>Наші цінності</h2>
+                <div class="row">
+                    <div class="col-md-8 offset-md-2">
+                        <div class="tips"><img src="img/tip-img.jpg" class="img-responsive" alt="Logo">
+                        </div>
+                        <h1 class="ribbon">
+                            <span class="text">Tip Of The Day</span>
+                        </h1>
+
+                        <div class="tip-box">
+                            <img src="img/quote.png">
+                            <blockquote class="quote-text">
+                                <p id="tip_text"><em>"Store your produce DRY. A little humidity is a good thing for produce - but wet is bad news. Some moisture will keep produce perky; too much moisture can promote mold or mushiness.</em></p>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="search">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 offset-md-2">
+                        <div id="search_overlay">
+                            <div class="loader"></div>
+                        </div>
+                            <div class="input-group">
+                                <input id="recipe" type="text" class="form-control" placeholder="Recipe name">
+                                <span class="input-group-btn">
+                                <button id="search_btn" type="button" class="btn btn-outline-success">Search</button>
+                              </span>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="add">
+            <div class="container">
+                <div class="row justify-content-around">
+                    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-6 p-2 p-md-4 recipeName">
+                        <h3>
+							<span>
+								 <input placeholder="Your new recipe name" id="recipeName" class="form-control"
+                                        type="text" value=""/>
+				      		 </span>
+                        </h3>
                         <hr>
-                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-left slideanim">
-                            <p>Сучасний ритм життя вимагає від нас багато зусиль, аби досягти чогось чи підтримувати власний рівень. <br> <br>У цифрову епоху ми навчились підкорювати світ, хоча досі належним чином не вміємо піклуватись про власне здоров'я. <br> <br> Мабуть, кожен хоча б раз у житті чув таке просте словосполучення, як здорове харчування. Це один із декількох стовпів, на яких тримається довголіття. </p>
+                        <div class="col-12 ingredients">
+							<span>
+								<p class="mr-1">Ingredients</p>
+							</span>
+                            <i id="btn2" class="fa fa-plus-circle"></i>
+                            <span class="badge badge-secondary">Tap to add new</span>
                         </div>
-                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-left slideanim">
-                            <p>На жаль, індустрія та маніпулювання суспільною думкою підкидають у наш раціон продукти, що не мають нічого спільного зі здоров'ям. <br> <br>Особливо страждають від цього діти, чий незахищений розум ще не здатен фільтрувати інформацію. <br> <br>Наше завдання - нагодувати їх правильною їжею. Їхнє здоров'я - це здоров'я нації. Зрештою, це - питання виживання.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="left col-xs-6 col-md-6 col-lg-6 slideanim">
-                        <div class="l1 slide"></div>
-                        <div class="l2 slide"></div>
-                    </div>
-                    <div class="right col-xs-6 col-md-6 col-lg-6 slideanim">
-                        <div class="r1 slide"></div>
-                        <div class="r2 slide"></div>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <div class="btm">
-                            <span><i class="fa fa-angle-double-down arrow"></i></span>
+                        <ol class="p-2" id="ingList">
+                            <li class="ingItem"><input class="ingName" placeholder="New ingredient" value=""><i class="trash far fa-trash-alt"></i></li>
+                        </ol>
+                        <textarea class="form-control" placeholder="Process of cooking" name="" id="cookingProcess"
+                                  cols="45" rows="5"></textarea>
+
+                        <div class="col-md-12 ">
+                            <input id="add_item" class="btn btn-light m-1" type="submit" value="Submit">
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
 
-        <section class="text-center" id="tab3">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <div class="btm">
-                            <span><i class="fa fa-angle-double-down arrow"></i></span>
-                        </div>
-                    </div>
-                </div>
-                <h2>Переваги</h2>
-                <h5>Чому вигідно мати справу з нами</h5>
 
-                <div class="row">
-                    <div class="benefits slideanim slide col-xs-6 col-md-4 col-lg-4">
-                        <i class="fa fa-truck adv"></i>
-                        <h4><strong>Доставка</strong></h4>
-                        <p>Ваше замовлення прибуде в максимально короткий термін.</p>
-                    </div>
-                    <div class="benefits slideanim slide col-xs-6 col-md-4 col-lg-4">
-                        <i class="fa fa-shield adv"></i>
-                        <h4><strong>Гарантія якості</strong></h4>
-                        <p>Ми приділяємо особливу увагу свіжості наших страв.</p>
-                    </div>
-                    <div class="benefits slideanim slide  col-xs-6 col-md-4 col-lg-4">
-                        <i class="fa fa-dropbox adv"></i>
-                        <h4><strong>Надійне пакування</strong></h4>
-                        <p>Цей процес важливий для успішного транспортування замовлень.</p>
-                    </div>
-                    <div class="benefits slideanim slide  col-xs-6 col-md-4 col-lg-4">
-                        <i class="fa fa-money adv"></i>
-                        <h4><strong>Мінімальне замовлення</strong></h4>
-                        <p>Намагємося задовольнити потреби широкого кола споживачів.</p>
-                    </div>
-                    <div class="benefits slideanim slide col-xs-6 col-md-4 col-lg-4">
-                        <i class="fa fa-group adv"></i>
-                        <h4><strong>Лояльність</strong></h4>
-                        <p>Для постійних клієнтів передбачена гнучка система знижок.</p>
-                    </div>
-                    <div class="benefits slideanim slide col-xs-6 col-md-4 col-lg-4">
-                        <i class="fa fa-smile-o adv"></i>
-                        <h4><strong>Задоволення</strong></h4>
-                        <p>Турбота про час, настрій і гаманець своїх клієнтів.</p>
-                    </div>
-                </div>
-            </div>
+                    <div id="recipeList" class="col-xs-10 col-sm-10 col-md-10 col-lg-6 p-2 p-md-4">
+                        <span><h3>Your Collection</h3></span>
+                        <div class="recipe_container">
 
-        </section>
+                            <!--                            <div class="item clearfix" id="%id%">-->
+                            <!--&lt;!&ndash;								<div class="btn_control">&ndash;&gt;-->
+                            <!--&lt;!&ndash;									<button class="btn btn-info" title="Edit post"><i class="far fa-edit"></i>&ndash;&gt;-->
+                            <!--&lt;!&ndash;									</button>&ndash;&gt;-->
+                            <!--&lt;!&ndash;								</div>&ndash;&gt;-->
+                            <!--                                <h4 class="recipe_value">%name%</h4>-->
+                            <!--                                <div class="recipe_ingredients"><p>INGREDIENTS</p>-->
+                            <!--                                    <ul class="ingredient_value"></ul>-->
+                            <!--                                </div>-->
+                            <!--                                <div><p>METHOD</p>-->
+                            <!--                                    <p class="recipe_method">%process%</p>-->
+                            <!--                                    <div class="date">-->
+                            <!--                                        <p></p>-->
+                            <!--                                    </div>-->
+                            <!--                                    <div class="btn_control">-->
+                            <!--                                        <button class="btn btn-danger" id="btn_delete" title="Delete post">-->
+                            <!--											<i class="far fa-times-circle"></i>-->
+                            <!--										</button>-->
+                            <!--                                    </div>-->
+                            <!--                                </div>-->
+                            <!--                            </div>-->
 
-        <section class="text-center">
-            <div class="row" id="tab4">
-                <div class="col-12">
-                    <h3>ЩО МИ ПРОПОНУЄМО</h3>
-                        <ul id="rig">
-                            <li class="col-xs-6 col-md-3 col-lg-4">
-                                <a class="rig-cell" href="breakfast/">
-                                    <span class="rig-img img6" ></span>
-                                    <h3>Сніданки</h3>
-                                    <span class="rig-overlay"></span>
-                                </a>
-                            </li>
-                            <li class="col-xs-6 col-md-3 col-lg-4">
-                                <a class="rig-cell" href="salads/">
-                                    <span class="rig-img img4" ></span>
-                                    <h3>Салати</h3>
-                                    <span class="rig-overlay"></span>
-                                </a>
-                            </li>
-                            <li class="col-xs-6 col-md-3 col-lg-4">
-                                <a class="rig-cell" href="soups/">
-                                    <span class="rig-img img5" ></span>
-                                    <h3>Перші страви</h3>
-                                    <span class="rig-overlay"></span>
-                                </a>
-                            </li>
-                            <li class="col-xs-6 col-md-3 col-lg-4">
-                                <a class="rig-cell" href="meat/">
-                                    <span class="rig-img img3" ></span>
-                                    <h3>М'ясні страви</h3>
-                                    <span class="rig-overlay"></span>
-                                </a>
-                            </li>
-                            <li class="col-xs-6 col-md-3 col-lg-4">
-                                <a class="rig-cell" href="fish/">
-                                    <span class="rig-img img2" ></span>
-                                    <h3>Рибні страви</h3>
-                                    <span class="rig-overlay"></span>
-                                </a>
-                            </li>
-                            <li class=" col-xs-6 col-md-3 col-lg-4">
-                                <a class="rig-cell " href="sides/">
-                                    <span class="rig-img img1" ></span>
-                                    <h3>Гарніри</h3>
-                                    <span class="rig-overlay"></span>
-                                </a>
-                            </li>
-                            <li class=" col-xs-6 col-md-3 col-lg-4">
-                                <a class="rig-cell " href="diet/">
-                                    <span class="rig-img img9" ></span>
-                                    <h3>Дієтичні страви</h3>
-                                    <span class="rig-overlay"></span>
-                                </a>
-                            </li>
-                            <li class=" col-xs-6 col-md-3 col-lg-4">
-                                <a class="rig-cell " href="banquet/">
-                                    <span class="rig-img img10" ></span>
-                                    <h3>Бенкенте меню</h3>
-                                    <span class="rig-overlay"></span>
-                                </a>
-                            </li>
-                            <li class=" col-xs-6 col-md-3 col-lg-4">
-                                <a class="rig-cell" href="dessert/">
-                                    <span class="rig-img img7" ></span>
-                                    <h3>Десерти та випічка</h3>
-                                    <span class="rig-overlay"></span>
-                                </a>
-                            </li>
-                            <li class="col-xs-6 col-md-3 col-lg-4">
-                                <a class="rig-cell" href="special/">
-                                    <span class="rig-img img8" ></span>
-                                    <h3>Спецзамовлення</h3>
-                                    <span class="rig-overlay"></span>
-                                </a>
-                            </li>
-                            <li class="col-xs-6 col-md-3 col-lg-4">
-                                <a class="rig-cell" href="craft/">
-                                    <span class="rig-img img11" ></span>
-                                    <h3>Крафтові делікатеси</h3>
-                                    <span class="rig-overlay"></span>
-                                </a>
-                            </li>
-                        </ul>
-                </div>
-            </div>
-        </section>
 
-        <section id="gallery">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <div class="image_wrap">
-                            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                                <!-- Indicators -->
-                                <ol class="carousel-indicators">
-                                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                                    <li data-target="#carousel-example-generic" data-slide-to="3"></li>
-                                    <li data-target="#carousel-example-generic" data-slide-to="4"></li>
-                                    <li data-target="#carousel-example-generic" data-slide-to="5"></li>
-                                    <li data-target="#carousel-example-generic" data-slide-to="6"></li>
-                                    <li data-target="#carousel-example-generic" data-slide-to="7"></li>
-                                    <li data-target="#carousel-example-generic" data-slide-to="8"></li>
-                                    <li data-target="#carousel-example-generic" data-slide-to="9"></li>
-                                    <li data-target="#carousel-example-generic" data-slide-to="10"></li>
-                                    <li data-target="#carousel-example-generic" data-slide-to="11"></li>
-                                    <li data-target="#carousel-example-generic" data-slide-to="12"></li>
-                                    <li data-target="#carousel-example-generic" data-slide-to="13"></li>
-                                    <li data-target="#carousel-example-generic" data-slide-to="14"></li>
-                                    <li data-target="#carousel-example-generic" data-slide-to="15"></li>
-                                </ol>
-
-                                <!-- Wrapper for slides -->
-                                <div class="carousel-inner" role="listbox">
-                                    <div class="item active">
-                                        <img src="img/pic_0.jpg" class="img-responsive">
-                                    </div>
-                                    <div class="item">
-                                        <img src="img/pic_1.jpg" class="img-responsive">
-                                    </div>
-                                    <div class="item">
-                                        <img src="img/pic_2.jpg" class="img-responsive">
-                                    </div>
-                                    <div class="item">
-                                        <img src="img/pic_3.jpg" class="img-responsive">
-                                    </div>
-                                    <div class="item">
-                                        <img src="img/pic_4.jpg" class="img-responsive">
-                                    </div>
-                                    <div class="item">
-                                        <img src="img/pic_5.jpg" class="img-responsive">
-                                    </div>
-                                    <div class="item">
-                                        <img src="img/pic_6.jpg" class="img-responsive">
-                                    </div>
-                                    <div class="item">
-                                        <img src="img/pic_7.jpg" class="img-responsive">
-                                    </div>
-                                    <div class="item">
-                                        <img src="img/pic_8.jpg" class="img-responsive">
-                                    </div>
-                                    <div class="item">
-                                        <img src="img/pic_9.jpg" class="img-responsive">
-                                    </div>
-                                    <div class="item">
-                                        <img src="img/pic_10.jpg" class="img-responsive">
-                                    </div>
-                                    <div class="item">
-                                        <img src="img/pic_11.jpg" class="img-responsive">
-                                    </div>
-                                    <div class="item">
-                                        <img src="img/pic_12.jpg" class="img-responsive">
-                                    </div>
-                                    <div class="item">
-                                        <img src="img/pic_13.jpg" class="img-responsive">
-                                    </div>
-                                    <div class="item">
-                                        <img src="img/pic_14.jpg" class="img-responsive">
-                                    </div>
-                                    <div class="item">
-                                        <img src="img/pic_15.jpg" class="img-responsive">
-                                    </div>
-                                </div>
-
-                                <!-- Controls -->
-                                <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
-                                    <span class="sr-only">Previous</span>
-                                </a>
-                                <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                                    <span class="sr-only">Next</span>
-                                </a>
+                            <!--                            <div class="item clearfix item_edit_form" id="%id%"><h4 class="recipe_value"><input-->
+                            <!--                                    value="%name%" class="form-control" type="text"/></h4>-->
+                            <!--                                <div class="recipe_ingredients"><p>INGREDIENTS</p>-->
+                            <!--                                    <ul class="ingredient_value"></ul>-->
+                            <!--                                </div>-->
+                            <!--                                <div>-->
+                            <!--                                    <p>METHOD</p>-->
+                            <!--                                    <p class="recipe_method"><textarea class="form-control" id="process" cols="45"-->
+                            <!--                                                                       rows="5">%process%</textarea></p>-->
+                            <!--                                    <div><p class="date"></p></div>-->
+                            <!--                                    <div class="btn_control"><input id="save" class="btn btn-light m-1" type="submit"-->
+                            <!--                                                                    value="Save"></div>-->
+                            <!--                                    <p class="today">Published: %year%</p>-->
+                            <!--                                </div>-->
+                            <!--                            </div>-->
+                            <div class="results_pages">
+                            
                             </div>
-                            <a class="btn btn-danger" href="gallery/" role="button">Більше світлин</a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="tab5">
-            <h3>Контакти</h3>
-
-            <div class="row">
-                <div class="slideanim slide col-xs-12 col-md-4 col-lg-4">
-                    <ul>
-                        <li><b>Instagram:</b> <a href="http://instagram.com/miracle_food.d">miracle_food.d</a></li>
-                        <li><b>Facebook:</b> <a href="https://www.facebook.com/people/%D0%94%D0%B8%D0%B2%D0%BE-%D0%87%D0%B6%D0%B0/100061208319629">facebook.com/Диво Їжа</a></li>
-                    </ul>
-                </div>
-                <div class="slideanim slide col-xs-12 col-md-4 col-lg-4">
-                    <ul>
-                        <li><b><i class="fa fa-map-marker"></i> бульвар Кольцова, 14 а</b></li>
-                        <li><i class="fa fa-phone" aria-hidden="true"></i> +38 098 911-33-75</li>
-                        <li><i class="fa fa-phone" aria-hidden="true"></i> +38 067 530-46-17</li>
-                        <li><i class="fa fa-envelope"></i> idmshef@gmail.com</li>
-                    </ul>
-                </div>
-                <div class="slideanim slide  col-xs-12 col-md-4 col-lg-4">
-                    <ul>
-                        <li><b>Безкоштовна доставка</b></li>
-                        <li>ЖК "Парковий"</li>
-                    </ul>
+        <footer class="separator-top mt-3">
+            <div class="container ">
+                <div class="row justify-content-between align-items-center">
+                    <div class="col-5 social">
+                        <ul class=" fs-20 ">
+                            <li><a href="https://www.facebook.com/ivan.dyvak"></a><i class="fab fa-facebook-f"></i></li>
+                            <li><a href=""></a><i class="fab fa-twitter"></i></li>
+                            <li><a href=""></a><i class="fab fa-linkedin"></i></li>
+                        </ul>
+                    </div>
+                    <div class="col-2 text-center ">
+                        <i class="fas fa-book fs-20 "></i>
+                    </div>
+                    <div class="col-5 text-center text-md-right">
+                        <p>Powered by Ivan Dyvak</p>
+                    </div>
                 </div>
             </div>
-        </section>
+        </footer>
+
     </div>
+</div>
 
-    <footer >
-        <div class="row">
-            <div class="text-center col-xs-6 col-sm-6 col-lg-6">
-                <p><i class="fa fa-copyright" aria-hidden="true"></i>Designed by Ivan Dyvak</p>
-            </div>
-            <div class="text-center col-xs-6 col-sm-6 col-lg-6">
-                <p>Всі права захищені <br> MiracleFood - приготування та доставка їжі</p>
-            </div>
-        </div>    
-    </footer>
 
-    <script src="libs/jquery/dist/jquery.js"></script>
+<script src="https://code.jquery.com/jquery.js"></script>
+<!--  <script src="js/vendor.js"></script>-->
+  <script src="js/app.js"></script>
 
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="js/jquery.slitslider.js"></script>
-    <script src="js/float-panel.js"></script>
-    <script src="js/main.js"></script>
-    <script type="text/javascript" src="js/jquery.ba-cond.min.js"></script>
-    <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-    <script src="js/modalEffects.js"></script>
-    <script src="js/classie.js"></script>
-    <script>
-        function myFunction(x) {
-            x.classList.toggle("change");
-        }
-    </script>
-   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+<!--  <script src="js/bootstrap.js"></script>-->
+<!-- <script src="js/main.js"></script> -->
 </body>
 </html>
