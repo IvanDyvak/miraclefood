@@ -1,3 +1,6 @@
+
+
+
 var recipeController = (function() {
     // Creating object for recipes
     
@@ -94,18 +97,14 @@ var recipeController = (function() {
     
             deleteItem: function(id) {
                 var ids, index;
-    
                 ids = recipeCollection.map(function(current) {
-    
-                    return current.id;
-    
+                        return current.id;
                 });
-    
-                index = ids.indexOf(id);
-    
-                // if (index !== -1) {
+                    index = ids.indexOf(Number(id));
+
+                if (index !== -1) {
                 recipeCollection.splice(index, 1);
-                // }
+                }
                 localStorage.setItem('recipes', JSON.stringify(recipeCollection));
             },
     
@@ -113,7 +112,6 @@ var recipeController = (function() {
                 var obj;
                 recipeCollection.map(function(current) {
                     if (ID == current.id){
-    
                         obj = {
                             id: current.id,
                             name: current.name,
@@ -263,7 +261,28 @@ var recipeController = (function() {
     
                 element = document.querySelector('.recipe_container');
     
-                html = '<div class="item clearfix" id="%id%"><h4 class="recipe_value">%name%</h4><div class="recipe_ingredients"> <p>INGREDIENTS</p> <ul class="ingredient_value"></ul></div><div><p>METHOD</p><p class="recipe_method">%process%</p><div><p class="date"></p></div><div class="btn_control">                                        <button class="btn btn-info" title="Edit post"><i class="far fa-edit"></i></button><button class="btn  btn-danger" id="" title="Delete post"><i class="far fa-times-circle btn_delete"></i></button></div><p class="today">Published: %year%</p></div></div>';
+                html = `<div class="item clearfix" id="%id%">
+                            <h4 class="recipe_value">%name%</h4>
+                            <div class="recipe_ingredients"> <p>INGREDIENTS</p> 
+                                <ul class="ingredient_value"></ul>
+                            </div>
+                            <div>
+                                <p>METHOD</p>
+                                <p class="recipe_method">%process%</p>
+                                <div>
+                                <p class="date"></p>
+                                </div>
+                                <div class="btn_control">                                        <button class="btn btn-info" title="Edit post">
+                                        <i class="far fa-edit"></i>
+                                    </button>
+                                    <button class="btn  btn-danger" id="" title="Delete post">
+                                        <i class="far fa-times-circle btn_delete"></i>
+                                    </button>
+                                </div>
+                            <p class="today">Published: %year%</p>
+                            </div>
+                        </div>
+                `;
     
                 // Replace the placeholder text with some actual data
                 newHtml = html.replace('%id%', obj.id);
@@ -456,13 +475,16 @@ var recipeController = (function() {
     
     
         // ************************************************************
-    
-        const createBtutton = (page, type) => `
-            <button class="btn_inline results__btn--${type}" data-goto = "${type === 'prev' ? page - 1 : page + 1}">
-                <span>Page ${type === 'prev' ? page - 1 : page + 1}</span> 
-                ${type === 'prev' ? '<i class="fa fa-caret-left"></i>' : '<i class="fa fa-caret-right"></i>'}
-            </button>
-            `;
+            const createButton = (page, type) => {
+              // 'type' will be either 'prev' or 'next'
+              const goToPage = type === 'prev' ? page - 1 : page + 1;
+              return `
+                <button class="btn_inline results__btn--${type}" data-goto="${goToPage}">
+                     ${type === 'prev' ? '<i class="fa fa-caret-left"></i>' : '<i class="fa fa-caret-right"></i>'}
+                     <span>Page ${goToPage}</span>
+                </button>
+              `;
+            };
                 // <svg class="search__icon">
                 // <use href="img/icons.svg#icon-triangle-${type === 'prev' ? 'left' : 'right'}"></use>
                 // </svg>
@@ -471,19 +493,19 @@ var recipeController = (function() {
             const pages = Math.ceil(numResults / resPerPage);
             let button;
                 if (page === 1 && pages > 1){
-                    button = createBtutton(page, 'next');
+                    button = createButton(page, 'next');
                 }else if (page < pages){
                     //both buttons
                     button = `
-                        ${createBtutton(page, 'prev')}
-                        ${createBtutton(page, 'next')}
+                        ${createButton(page, 'prev')}
+                        ${createButton(page, 'next')}
                     `;
                 }else if (page === pages && pages > 1){
-                    button = createBtutton(page, 'prev');
+                    button = createButton(page, 'prev');
                 }
-                // else if (page === 1){
-                //     button = '';
-                // }
+                else if (page === 1){
+                    button = '';
+                }
     
                 document.querySelector(".recipe_pagination").insertAdjacentHTML('afterbegin', button);
         };
@@ -510,7 +532,7 @@ var recipeController = (function() {
                 renderButtons (page, savedRecipes.length, resPerPage);
         };
       
-            document.querySelector(".recipe_pagination").addEventListener('click', e =>{
+        document.querySelector(".recipe_pagination").addEventListener('click', e =>{
                 const btn = e.target.closest('.btn_inline');
                 if (btn) {
                     const goToPage = parseInt(btn.dataset.goto, 10);
@@ -528,39 +550,11 @@ var recipeController = (function() {
                         }
                     }delButton();
 
-                        // savedRecipes = JSON.parse(localStorage.getItem('recipes'));
-                        renderResults (savedRecipes, page = 1, resPerPage = 2, goToPage);
-                        console.log(goToPage);
+                        savedRecipes = JSON.parse(localStorage.getItem('recipes'));
+                        renderResults (savedRecipes, goToPage);
                 }
     
-            });
-    
-    
-    
-    
-        // var postFromStor = function(){
-        //     var data = JSON.parse(localStorage.getItem('recipes'));
-        //     data.forEach(function(cur) {
-        //         UICtrl.addListItem(cur);
-        //     });
-        //     var delBtn = document.querySelectorAll('.btn_delete');
-        //     var delArr = Array.prototype.slice.call(delBtn);
-        //     delArr.forEach(function (cur) {
-        //         cur.addEventListener("click", ctrlDeleteItem);
-        //     })
-        //     var editBtn = document.querySelectorAll('.fa-edit');
-        //     var editArr = Array.prototype.slice.call(editBtn);
-        //     editArr.forEach(function (cur) {
-        //         cur.addEventListener("click", ctrlEditItem);
-        //     })
-    
-        // };
-        // var editBtn = document.querySelectorAll('.fa-edit');
-        // var editArr = Array.prototype.slice.call(editBtn);
-        // editArr.forEach(function (cur) {
-        //     cur.addEventListener("click", ctrlEditItem);
-        // })
-    
+        });
     
         var ctrlAddItem = function () {
             var input, newItem;
@@ -605,6 +599,10 @@ var recipeController = (function() {
     
             // 2. Delete the item from the UI
             UICtrl.deleteListItem(ID);
+
+
+            // savedRecipes = JSON.parse(localStorage.getItem('recipes'));
+            // renderResults (savedRecipes, page = 1, resPerPage = 2);
     
         };
         var ctrlEditItem = function(event) {
@@ -635,15 +633,23 @@ var recipeController = (function() {
             document.getElementById('overlaySecond').style.display = 'none';
             var itemEditForm = document.querySelector('.item_edit_form');
             itemEditForm.parentNode.removeChild(itemEditForm);
+
+            function delButton() {
+                var recipePagination = document.querySelector('.recipe_pagination');
+                while (recipePagination.hasChildNodes()) {
+                recipePagination.removeChild(recipePagination.firstChild);
+                }
+            }delButton();
+
             savedRecipes = JSON.parse(localStorage.getItem('recipes'));
-    
-            renderResults (savedRecipes, page = 1, resPerPage = 2, goToPage);
+            renderResults (savedRecipes, page = 1, resPerPage = 2);
         };
     
         return {
             init: function() {
-                savedRecipes = JSON.parse(localStorage.getItem('recipes'));
-                renderResults (savedRecipes, page = 1, resPerPage = 2);
+                    savedRecipes = JSON.parse(localStorage.getItem('recipes'));
+                    renderResults (savedRecipes, page = 1, resPerPage = 2);
+
 
                 console.log('Application has started.');
                 setupEventListeners();

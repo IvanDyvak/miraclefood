@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="css/main.css">
     <link href="img/favicon.ico" rel="shortcut icon">
-    <!--	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">-->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
     <!--	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
           integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
@@ -195,17 +196,59 @@
         <section id="search">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-8 offset-md-2">
-                        <div id="search_overlay">
+<!--                         <div id="search_overlay">
                             <div class="loader"></div>
-                        </div>
-                            <div class="input-group">
-                                <input id="recipe" type="text" class="form-control" placeholder="Recipe name">
-                                <span class="input-group-btn">
-                                <button id="search_btn" type="button" class="btn btn-outline-success">Search</button>
-                              </span>
+                        </div> -->
+                        <form class="search">
+                          <input
+                            type="text"
+                            class="search__field"
+                            placeholder="Search over 2 million recipes"
+                          />
+                          <button class="btn search__btn">
+                            <i class="fa fa-search search__icon"></i>
+                            <span>Search</span>
+                          </button>
+                        </form>
+                        <div class="col-sm-6 col-md-6">
+                            <div class="results">
+                                <ul class="results_list">
+                                  <!-- 
+                                  <li>
+                                    <a class="results__link results__link--active" href="#23456">
+                                      <figure class="results__fig">
+                                        <img src="src/img/test-1.jpg" alt="Test" />
+                                      </figure>
+                                      <div class="results__data">
+                                        <h4 class="results__title">Pasta with Tomato Cream ...</h4>
+                                        <p class="results__publisher">The Pioneer Woman</p>
+                                        <div class="results__user-generated">
+                                          <svg>
+                                            <use href="src/img/icons.svg#icon-user"></use>
+                                          </svg>
+                                        </div>
+                                      </div>
+                                    </a>
+                                  </li>
+                                   -->
+                                </ul>
+
+                                <div class="results_pages">
+                                  <!-- <button class="btn--inline pagination__btn--prev">
+                                    <svg class="search__icon">
+                                      <use href="src/img/icons.svg#icon-arrow-left"></use>
+                                    </svg>
+                                    <span>Page 1</span>
+                                  </button>
+                                  <button class="btn--inline pagination__btn--next">
+                                    <span>Page 3</span>
+                                    <svg class="search__icon">
+                                      <use href="src/img/icons.svg#icon-arrow-right"></use>
+                                    </svg>
+                                  </button> -->
+                                </div>
                             </div>
-                    </div>
+                        </div>
                 </div>
             </div>
         </section>
@@ -235,7 +278,7 @@
                                   cols="45" rows="5"></textarea>
 
                         <div class="col-md-12 ">
-                            <input id="add_item" class="btn btn-light m-1" type="submit" value="Submit">
+                            <input id="add_item" class="btn btn-light m-1" type="submit" value="CREATE">
                         </div>
                     </div>
 
@@ -318,6 +361,7 @@
 <script src="https://code.jquery.com/jquery.js"></script>
 <!--  <script src="js/vendor.js"></script>-->
   <script src="js/app.js"></script>
+  <script src="js/search.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"

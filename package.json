@@ -1,0 +1,22 @@
+{
+  "name": "gulp",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "My Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ivan Dyvak",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.23.6",
+    "gulp": "^3.9.1",
+    "gulp-server-livereload": "^1.9.2"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "browser-sync": "^2.23.6",
+    "gulp": "^3.9.1"
+  }
+}
