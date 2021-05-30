@@ -409,11 +409,11 @@ var recipeController = (function() {
         var setupEventListeners = function() {
             document.getElementById('add_item').addEventListener('click', ctrlAddItem);
     
-            document.addEventListener('keypress', function(event) {
-                if (event.keyCode === 13 || event.which === 13) {
-                    ctrlAddItem();
-                }
-            });
+            // document.addEventListener('keypress', function(event) {
+            //     if (event.keyCode === 13 || event.which === 13) {
+            //         ctrlAddItem();
+            //     }
+            // });
     
         };
     
