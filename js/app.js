@@ -172,6 +172,7 @@ var recipeController = (function() {
         function myFunction() {
             if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
                 document.querySelector(".wrapper").style.top = "-30px";
+                document.querySelector("#about").style.marginTop = "70px";
                 document.querySelector(".logo").style.width = "130px";
                 document.querySelector(".logo").style.height = "35px";
                 document.querySelector(".logo").style.transform = "translateX(15%)";
@@ -180,6 +181,7 @@ var recipeController = (function() {
                 document.querySelector(".logo").style.width = "150px";
                 document.querySelector(".logo").style.height = "40px";
                 document.querySelector(".wrapper").style.top = "0px";
+                document.querySelector("#about").style.marginTop = "95px";
                 document.querySelector(".navbar").style.height = "auto";
                 document.querySelector(".logo").style.transform = "translateX(0)";
     
@@ -191,7 +193,7 @@ var recipeController = (function() {
         var navbarFormSignIn = document.querySelector('.navbar_form_sign_in');
         var navbarFormsignUp = document.querySelector('.navbar_form_sign_up');
         // var navbarForm = document.querySelector('.navbar_form');
-        var overlay = document.getElementById('overlay');
+        var overlay = document.getElementById('overlaySecond');
     
         document.onclick = function(e){
             if(e.target.id == 'overlay'){
@@ -261,7 +263,7 @@ var recipeController = (function() {
     
                 element = document.querySelector('.recipe_container');
     
-                html = `<div class="item clearfix" id="%id%">
+                html = `<div class="item_added clearfix" id="%id%">
                             <h4 class="recipe_value">%name%</h4>
                             <div class="recipe_ingredients"> <p>INGREDIENTS</p> 
                                 <ul class="ingredient_value"></ul>
@@ -309,7 +311,7 @@ var recipeController = (function() {
                 overlay = document.getElementById('overlaySecond');
                 overlay.style.display = 'block';
     
-                html = '<div class="item clearfix item_edit_form" id="%id%"><h4 class="recipe_value"><input id="save_input_name" value="%name%" class="form-control" type="text"/></h4><div class="recipe_ingredients"> <p>INGREDIENTS</p> <ul class="edit_ingredient_value"></ul></div><div><p>METHOD</p><p class="recipe_method"><textarea class="form-control" id="process" cols="45" rows="5">%process%</textarea></p><div><p class="date"></p></div><div class="btn_control"><input id="save" class="btn btn-light m-1" type="submit" value="Save"></div><p class="today">Published: %year%</p></div></div>';
+                html = '<div class="clearfix item_edit_form" id="%id%"><h4 class="recipe_value"><input id="save_input_name" value="%name%" class="form-control" type="text"/></h4><div class="recipe_ingredients"> <p>INGREDIENTS</p> <ul class="edit_ingredient_value"></ul></div><div><p>METHOD</p><p class="recipe_method"><textarea class="form-control" id="process" cols="45" rows="5">%process%</textarea></p><div><p class="date"></p></div><div class="btn_control"><input id="save" class="btn btn-light m-1" type="submit" value="Save"></div><p class="today">Published: %year%</p></div></div>';
     
     
                 // Replace the placeholder text with some actual data
