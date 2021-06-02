@@ -1,6 +1,7 @@
 // import axios from 'axios';
 import {app_id, key} from './config.js';
 import Recipe from './recipe.js';
+import * as recipeView from './recipeView.js';
 
 class Search{
 	constructor(query){
@@ -69,12 +70,13 @@ const controlSearch = async () =>{
 
 
 
-const elements = {
+export const elements = {
 	searchForm: document.querySelector('.search'),
 	searchInput: document.querySelector('.search__field'),
 	searchResList: document.querySelector('.results_list'),
 	searchRes: document.querySelector('.results'),
-	searchResPages: document.querySelector('.results_pages')
+	searchResPages: document.querySelector('.results_pages'),
+	recipe: document.querySelector('.recipe')
 };
 const elementStrings = {
 	loader: 'loader'
@@ -223,7 +225,8 @@ const controlRecipe = async () =>{
 	console.log(id);
 	if(id) {
 		// Prepare UI for changes
-
+		recipeView.clearRecipe();
+		// renderLoader(elements.recipe);
 		// Create new recipe object
 		state.recipe = new Recipe(id);
 		//window.r = state.recipe;
@@ -236,8 +239,9 @@ const controlRecipe = async () =>{
 		state.recipe.parseIngredients();
 
 		// Render recipe
+		// clearLoader();
 
-		console.log(state.recipe);
+		recipeView.renderRecipe(state.recipe);
 		
 		}catch(error){
 			alert('Error processing recipe');
