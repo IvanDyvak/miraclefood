@@ -27,6 +27,8 @@ export default class Recipe{
 					this.url = res.data.sourceUrl;
 					this.ingredients = res.data.extendedIngredients;
 					this.summary = res.data.summary;
+					this.time = res.data.readyInMinutes;
+					this.servings = res.data.servings;
 			    }catch(error){
 	        		alert('Something wrong happened');
 	    		}
