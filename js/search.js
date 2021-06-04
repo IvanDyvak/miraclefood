@@ -119,6 +119,20 @@ const limitRecipeTitle = (title, limit = 17) =>{
 	return title;
 }
 
+const limitRecipeSummary = (summary, limit = 100) =>{
+	const newSummary = [];
+	if(summary.length > limit){
+		summary.split(' ').reduce((acc, cur) =>{
+			if(acc + cur.length <= limit){
+				newSummary.push(cur);
+			}
+			return acc + cur.length;
+		}, 0)
+		// return the result		
+		return `${newSummary.join(' ')}...`;
+	}
+}
+
 const renderRecipe = (recipe) =>{
 	const markup = `
         <li>
@@ -133,6 +147,7 @@ const renderRecipe = (recipe) =>{
 				  <p class="results__cookingTime"><i class="far fa-clock"></i> ${recipe.readyInMinutes} min</p>
 				  <p class="results__cookingTime">Servings: ${recipe.servings}</p>
 				</div>
+				<p class="results__summary">${limitRecipeSummary(recipe.summary)}</p>
             </div>
           </a>
         </li>		
