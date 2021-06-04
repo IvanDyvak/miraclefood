@@ -168,28 +168,28 @@ var recipeController = (function() {
     
     //Manipulating nav//
         window.onscroll = function() {myFunction()};
-    
-        function myFunction() {
-            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-                // document.querySelector(".wrapper").style.position = "-30px";
-                document.querySelector(".wrapper").style.position = "fixed";
-                document.querySelector(".topLine").style.marginTop = "-30px";
-                document.querySelector("#about").style.marginTop = "97px";
-                document.querySelector(".logo").style.width = "130px";
-                document.querySelector(".logo").style.height = "35px";
-                document.querySelector(".logo").style.transform = "translateX(15%)";
-    
-            } else {
-                document.querySelector(".logo").style.width = "150px";
-                document.querySelector(".logo").style.height = "40px";
-                document.querySelector(".wrapper").style.position = "relative";
-                document.querySelector(".topLine").style.marginTop = "0px";
-                document.querySelector("#about").style.marginTop = "0";
-                document.querySelector(".navbar").style.height = "auto";
-                document.querySelector(".logo").style.transform = "translateX(0)";
-    
-            }
+
+        const sticky = document.querySelector(".wrapper").offsetTop+100;
+
+            function myFunction() {
+        if (document.body.scrollTop > sticky || document.documentElement.scrollTop > sticky) {
+            document.querySelector(".wrapper").classList.add("sticky");
+            document.querySelector(".topLine").style.marginTop = "-30px";
+            // document.querySelector(".wrapper").style.top = "-30px";
+            document.querySelector(".logo").style.width = "130px";
+            document.querySelector(".logo").style.height = "35px";
+            document.querySelector(".logo").style.transform = "translateX(15%)";
+
+        } else {
+            document.querySelector(".logo").style.width = "150px";
+            document.querySelector(".logo").style.height = "40px";
+            document.querySelector(".wrapper").classList.remove("sticky");
+            document.querySelector(".topLine").style.marginTop = "0";
+            document.querySelector(".navbar").style.height = "auto";
+            document.querySelector(".logo").style.transform = "translateX(0)";
+
         }
+    }
     
         var loginSignIn = document.querySelector('.login_signin');
         var loginSignUp = document.querySelector('.login_signup');
