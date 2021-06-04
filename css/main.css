@@ -3,7 +3,7 @@ body{
    */
     height: 100%;
     color: #fff;
-    /*position: relative;*/
+    position: relative;
 }
 #overlay{
     position: absolute;
@@ -50,6 +50,20 @@ body{
     transition: all .4s ease-in-out;
 }
 
+.sticky {
+  position: fixed;
+  top: 0;
+  background: #444A62 none repeat scroll 0 0;
+  animation: smoothScroll 1s forwards;
+}
+@keyframes smoothScroll {
+  0% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
 .topLine{
     background-color: #f2f2f2;
     color: rgba(0,0,0,.95);    
@@ -64,6 +78,7 @@ body{
 .topLine p{
     margin: 0;
 }
+
 
 .logo{
     width: 180px;
@@ -439,7 +454,7 @@ input[type=text], input[type=password] {
     max-width: 800px;
   margin-bottom: 15rem;}
   .recipe__fig {
-    height: 30rem;
+    /*height: 30rem;*/
     position: relative;
     transform: scale(1.04) translateY(-1px);
     transform-origin: top; }
