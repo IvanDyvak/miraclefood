@@ -70,7 +70,7 @@ export const renderRecipe = recipe =>{
                 This recipe was carefully designed and tested by
                 <span class="recipe__by">${recipe.author}</span>. Please check out directions at their website.
             </p>
-            <p class="recipe__directions-text">${recipe.summary}</p>
+            <p class="recipe__directions-text">${recipe.instructions}</p>
             <a class="btn-small recipe__btn" href="${recipe.url}" target="_blank">
                 <span>Directions</span>
                 <i class="fa fa-caret-right"></i>
