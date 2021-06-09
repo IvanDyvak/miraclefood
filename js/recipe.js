@@ -2,8 +2,12 @@ import {app_id, key} from './config.js';
 
 
 export default class Recipe{
-	constructor(id){
+	constructor(id, name, ingredients, process, year){
 		this.id = id;
+	    this.name = name;
+        this.ingredients = ingredients;
+        this.process = process;
+        this.year = year;
 	}
 		async getRecipe(){
 		// try{
@@ -27,6 +31,7 @@ export default class Recipe{
 					this.url = res.data.sourceUrl;
 					this.ingredients = res.data.extendedIngredients;
 					this.summary = res.data.summary;
+					this.instructions = res.data.instructions;
 					this.time = res.data.readyInMinutes;
 					this.servings = res.data.servings;
 			    }catch(error){
@@ -34,6 +39,21 @@ export default class Recipe{
 	    		}
 	}
 
+		likedRecipe (){
+			   let yearOfPosted, now, months, month, yearPub, year;
+
+			    yearOfPosted = [];
+                now = new Date();
+                months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+                month = now.getMonth();
+                yearOfPosted.push(months[month]);
+                yearPub = now.getFullYear();
+                yearOfPosted.push(yearPub);
+                year = yearOfPosted.join(", ");
+
+
+			return new Recipe(Number(this.id), this.title, this.ingredients, this.instructions, year);
+		} 
 	// getIngredients(){
 
 	// 	let newArr = [];
