@@ -1,5 +1,5 @@
 
-
+// import Recipe from './recipe.js';
 
 var recipeController = (function() {
     // Creating object for recipes
@@ -55,9 +55,10 @@ var recipeController = (function() {
                 // Create new item
     
                 newItem = new Recipe(ID, name, ings, proc, year);
-    
+                
                 // Push it into our data structure
                 recipeCollection.push(newItem);
+
                 localStorage.setItem('recipes', JSON.stringify(recipeCollection));
                 // Return the new element
                 return newItem;
@@ -459,7 +460,8 @@ var recipeController = (function() {
                 fetch('json/tips.json')
                     .then(response => response.json())
                     .then(data => {
-                        var currentTip = JSON.parse(localStorage.getItem('currentTip'))
+                        var currentTip = JSON.parse(localStorage.getItem('currentTip'));
+                        var i;
                         for (i = 0; i < data.length; i++){
                             var thisTip = data[currentTip].description;
                             document.getElementById('tip_text').innerText = thisTip;
@@ -470,15 +472,35 @@ var recipeController = (function() {
     
         });
         /**********************************************************************/
-        //    ***********CREATING SEARCH LOADER*****************
-        //         document.getElementById('search_btn').addEventListener('click', function(){
-        //             var searchOverlay = document.getElementById('search_overlay').style.display = 'block';
+        //    ***********Manipulating with elements onscroll*****************
+
         //             setTimeout(function (){
         //                 document.getElementById('search_overlay').style.display = 'none';
         //             }, 10000);
         // });
-    
-    
+    const getCoords = (elem) =>{
+        let box = elem.getBoundingClientRect();
+
+          return {
+            top: box.top + pageYOffset,
+          };
+
+} 
+    window.addEventListener('scroll', function() {
+        const ribbon = document.querySelector('.ribbon');
+        const ribbonView = getCoords(ribbon);
+                console.log(ribbonView);
+
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+        if(scrollTop == ribbonView){
+            ribbon.style.display = 'none';
+                    console.log(ribbon);
+
+        };
+        console.log(scrollTop);
+
+    });
         // ************************************************************
             const createButton = (page, type) => {
               // 'type' will be either 'prev' or 'next'
@@ -652,7 +674,7 @@ var recipeController = (function() {
     
         return {
             init: function() {
-                    savedRecipes = JSON.parse(localStorage.getItem('recipes'));
+                    var savedRecipes = JSON.parse(localStorage.getItem('recipes'));
                     renderResults (savedRecipes, page = 1, resPerPage = 2);
 
 
