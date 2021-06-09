@@ -487,20 +487,27 @@ var recipeController = (function() {
 
 } 
     window.addEventListener('scroll', function() {
-        const ribbon = document.querySelector('.ribbon');
+        const ribbon = document.querySelector('.text');
         const ribbonView = getCoords(ribbon);
                 console.log(ribbonView);
 
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-        if(scrollTop == ribbonView){
-            ribbon.style.display = 'none';
-                    console.log(ribbon);
-
+        if(scrollTop >= 300){
+            let changeText = setTimeout(function (){
+                ribbon.innerText = 'Check our updates daily';
+                ribbon.style.background = '#9b2';
+            },2000);
+        }else{
+            setTimeout(function (){
+                ribbon.innerText = 'Tip Of The Day';
+                ribbon.style.background = '#e8e856';
+            },2000);
         };
         console.log(scrollTop);
 
     });
+
         // ************************************************************
             const createButton = (page, type) => {
               // 'type' will be either 'prev' or 'next'
