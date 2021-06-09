@@ -257,9 +257,24 @@ const controlRecipe = async () =>{
 		// clearLoader();
 
 		recipeView.renderRecipe(state.recipe);
+
+		//Adding Liked recipe to the collection
+
+		const newItem = state.recipe.likedRecipe();
+		console.log(newItem);
+        const recipeCollection = localStorage.getItem('recipes')
+            ? JSON.parse(localStorage.getItem('recipes'))
+            : [];
+
+
+        recipeCollection.push(newItem);
+
+        localStorage.setItem('recipes', JSON.stringify(recipeCollection));
+        console.log(recipeCollection);
+
 		
 		}catch(error){
-			alert('Error processing recipe');
+			alert('Error processing recipe. Please click again');
 		}
 	}
 };
