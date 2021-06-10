@@ -176,7 +176,7 @@ var recipeController = (function() {
         if (document.body.scrollTop > sticky || document.documentElement.scrollTop > sticky) {
             document.querySelector(".wrapper").classList.add("sticky");
             document.querySelector(".topLine").style.marginTop = "-30px";
-            // document.querySelector(".wrapper").style.top = "-30px";
+            document.querySelector("body").style.paddingTop = "97px";
             document.querySelector(".logo").style.width = "130px";
             document.querySelector(".logo").style.height = "35px";
             document.querySelector(".logo").style.transform = "translateX(15%)";
@@ -185,6 +185,7 @@ var recipeController = (function() {
             document.querySelector(".logo").style.width = "150px";
             document.querySelector(".logo").style.height = "40px";
             document.querySelector(".wrapper").classList.remove("sticky");
+            document.querySelector("body").style.paddingTop = "0px";
             document.querySelector(".topLine").style.marginTop = "0";
             document.querySelector(".navbar").style.height = "auto";
             document.querySelector(".logo").style.transform = "translateX(0)";
@@ -489,7 +490,6 @@ var recipeController = (function() {
     window.addEventListener('scroll', function() {
         const ribbon = document.querySelector('.text');
         const ribbonView = getCoords(ribbon);
-                console.log(ribbonView);
 
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
@@ -504,7 +504,7 @@ var recipeController = (function() {
                 ribbon.style.background = '#e8e856';
             },2000);
         };
-        console.log(scrollTop);
+        // console.log(scrollTop);
 
     });
 
