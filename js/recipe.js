@@ -1,6 +1,5 @@
 import {app_id, key} from './config.js';
 
-
 export default class Recipe{
 	constructor(id, name, ingredients, process, year){
 		this.id = id;
@@ -40,7 +39,17 @@ export default class Recipe{
 	}
 
 		likedRecipe (){
-			   let yearOfPosted, now, months, month, yearPub, year;
+			   let newItem, ID, yearOfPosted, now, months, month, yearPub, year;
+
+            const recipeCollection = localStorage.getItem('recipes')
+                ? JSON.parse(localStorage.getItem('recipes'))
+                : [];
+
+
+              function randomRange(min, max) {
+                    return (Math.random() * (max - min + 1)) + min
+                }
+            	ID = parseInt(randomRange(0, 10000));
 
 			    yearOfPosted = [];
                 now = new Date();
@@ -52,7 +61,17 @@ export default class Recipe{
                 year = yearOfPosted.join(", ");
 
 
-			return new Recipe(Number(this.id), this.title, this.ingredients, this.instructions, year);
+				newItem = new Recipe(ID, this.title, this.ingredients, this.instructions, year);
+        		console.log(newItem);
+
+                recipeCollection.push(newItem);
+
+                localStorage.setItem('recipes', JSON.stringify(recipeCollection));
+                 console.log(recipeCollection);
+
+                // Return the new element
+                return newItem;
+
 		} 
 	// getIngredients(){
 
