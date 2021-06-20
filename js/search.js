@@ -260,17 +260,60 @@ const controlRecipe = async () =>{
 
 		//Adding Liked recipe to the collection
 
-		const newItem = state.recipe.likedRecipe();
-		console.log(newItem);
-        const recipeCollection = localStorage.getItem('recipes')
-            ? JSON.parse(localStorage.getItem('recipes'))
-            : [];
+		const addLikedRecipe = () =>{
+			  const heart = document.getElementById('heart');
+			  heart.classList.remove("far");
+			  heart.classList.add("fas");
+
+			  setTimeout(function () {
+				  const addMessage = document.querySelector('.recipe__info-message');
+				  addMessage.hidden = false;
+			  }, 1500);
 
 
-        recipeCollection.push(newItem);
+			const newItem = state.recipe.likedRecipe();
 
-        localStorage.setItem('recipes', JSON.stringify(recipeCollection));
-        console.log(recipeCollection);
+
+			const createIngredient = ingredient =>`
+				<li class="ingItem">
+					${ingredient.count} ${ingredient.unit} ${ingredient.ingredient}
+				</li>
+			`;
+			const renderLikedRecipe = recipe =>{
+				const  element = document.querySelector('.recipe_container');
+
+				const markup = `
+						<div class="item_added clearfix" id="${recipe.id}">
+	                        <h4 class="recipe_value">${recipe.name}</h4>
+	                        <div class="recipe_ingredients"> <p>INGREDIENTS</p> 
+	                            <ul class="ingredient_value">
+		                        	${recipe.ingredients.map(el => createIngredient(el)).join('')}
+	</ul>
+	                        </div>
+	                        <div>
+	                            <p>METHOD</p>
+	                            <p class="recipe_method">${recipe.process}</p>
+	                            <div>
+	                            <p class="date"></p>
+	                            </div>
+	                            <div class="btn_control">                                        <button class="btn btn-info" title="Edit post">
+	                                    <i class="far fa-edit"></i>
+	                                </button>
+	                                <button class="btn  btn-danger" id="" title="Delete post">
+	                                    <i class="far fa-times-circle btn_delete"></i>
+	                                </button>
+	                            </div>
+	                        <p class="today">Published: ${recipe.year}</p>
+	                        </div>
+	                    </div>
+				`
+				        element.insertAdjacentHTML('afterbegin', markup);
+			}
+				renderLikedRecipe(newItem);
+				document.querySelector('.fa-heart').style.pointerEvents = "none";
+		}
+
+		document.querySelector('.fa-heart').addEventListener('click', addLikedRecipe);
 
 		
 		}catch(error){
@@ -282,3 +325,4 @@ const controlRecipe = async () =>{
 // window.addEventListener('hashchange', controlRecipe);
 // window.addEventListener('load', controlRecipe);
 ['hashchange', 'load'].forEach(event => window.addEventListener(event, controlRecipe));
+
