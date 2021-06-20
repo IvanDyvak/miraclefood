@@ -501,9 +501,24 @@ input[type=text], input[type=password] {
     font-size: 1.5rem;
     text-transform: uppercase;
     display: flex;
-    align-items: baseline; }
+    align-items: baseline; 
+    position: relative;
+  }
+
+    .recipe__info:last-child {
+      cursor: pointer;
+  }
+  .recipe__info-message{
+    position: absolute;
+    top: 30px;
+    left: -250px;
+    color: red;
+    text-transform: none;
+
+  }
     .recipe__info:not(:last-child) {
       margin-right: 4rem; }
+  
   .recipe__info-icon {
     font-size: 1.5rem;
     color: #e07c0d;
@@ -881,7 +896,25 @@ input[type=text]::placeholder {
     box-shadow: 0 0 30px rgba(0,0,0,.15) inset, 0 6px 10px rgba(0,0,0,.15);
 }
 
-.text:before,.text:after,
+.text2{
+    display:inline-block;
+    /*font-size: 30px;*/
+    /*padding:0.5em 1em;*/
+    min-width:15em;
+    line-height:1.2em;
+    /*background: #e8e856;*/
+    /*color: #7e8b9d;*/
+    position:relative;
+    border: 1px solid #e8e856;
+    font: normal 25px/40px 'Rye';
+    text-align: center;
+    color: #451;
+    background: #9b2;
+    border-radius: 4px;
+    box-shadow: 0 0 30px rgba(0,0,0,.15) inset, 0 6px 10px rgba(0,0,0,.15);
+}
+
+.text:before,.text2:before, .text:after,.text2:after,
 .bold:before{
     content:'';
     position:absolute;
@@ -894,13 +927,15 @@ input[type=text]::placeholder {
 /*    background:#EBECED;*/
 /*    z-index:-2;*/
 /*}*/
-.text:before{
+.text:before,
+.text2:before{
     bottom:100%;
     left:0;
     border-width: .5em .7em 0 0;
     border-color: transparent #9b2 transparent transparent;
 }
-.text:after{
+.text:after,
+.text2:after{
     top:100%;
     right:0;
     border-width: .5em 2em 0 0;
@@ -1164,13 +1199,17 @@ footer .powered{
     justify-content: center;
 }
 
-
-
+@media(min-width:890px){
+  .recipe__info-message {
+        left: -450px;
+    }
+ }
 @media(max-width:890px){
     .logo{
         margin-right: 0;
     }
-    .text{
+    .text,
+    .text2{
         font: normal 20px/40px 'Rye';
     }
     #search h1,
@@ -1186,14 +1225,15 @@ footer .powered{
     font-size: 1rem;
 }
   .recipe__info:not(:last-child) {
-      margin-right: 2rem;
+      margin-right: 0;
   }
   .recipe__info {
       font-size: 1rem;
   }
   .recipe__title span {
     padding: .7rem 1rem;
-}
+  }
+
 }
 
     footer{
