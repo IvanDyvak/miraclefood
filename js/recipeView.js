@@ -46,6 +46,10 @@ export const renderRecipe = recipe =>{
                 <span class="recipe__info-data recipe__info-data--people">${recipe.servings}</span>
                 <span class="recipe__info-text"> servings</span>
             </div>
+            <div class="recipe__info">
+                <i id="heart" class="far fa-heart recipe__info-icon"></i>
+                <span class="recipe__info-message" hidden> This recipe is added to the collection below</span>
+            </div>
         </div>
             <div class="recipe__info-buttons">
                 <button class="btn-tiny btn-decrease">
@@ -82,7 +86,7 @@ export const renderRecipe = recipe =>{
     	const overlay = document.getElementById('overlaySecond');
         overlay.style.display = 'block';
         overlay.insertAdjacentHTML('afterbegin', markup);
-    
+        overlay.offsetTop == 0; 
     	
 }
 // elements.recipe.insertAdjacentHTML('afterbegin', markup);
