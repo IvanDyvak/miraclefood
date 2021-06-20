@@ -1,7 +1,7 @@
 
 // import Recipe from './recipe.js';
 
-var recipeController = (function() {
+ var recipeController = (function() {
     // Creating object for recipes
     
     
@@ -546,11 +546,11 @@ var recipeController = (function() {
     
     
     
-        const renderResults = (savedRecipes, page = 1, resPerPage = 2) =>{
-                savedRecipes = JSON.parse(localStorage.getItem('recipes'));
+     const renderResults = (recipeCollection, page = 1, resPerPage = 2) =>{
+                recipeCollection = JSON.parse(localStorage.getItem('recipes'));
                 const start = (page - 1) * resPerPage;
                 const end = page * resPerPage;
-                savedRecipes.slice(start, end).forEach(UICtrl.addListItem);
+                recipeCollection.slice(start, end).forEach(UICtrl.addListItem);
     
                 var delBtn = document.querySelectorAll('.btn_delete');
                 var delArr = Array.prototype.slice.call(delBtn);
@@ -563,7 +563,7 @@ var recipeController = (function() {
                     cur.addEventListener("click", ctrlEditItem);
                 })
                 //render pagination
-                renderButtons (page, savedRecipes.length, resPerPage);
+                renderButtons (page, recipeCollection.length, resPerPage);
         };
       
         document.querySelector(".recipe_pagination").addEventListener('click', e =>{
@@ -584,8 +584,8 @@ var recipeController = (function() {
                         }
                     }delButton();
 
-                        savedRecipes = JSON.parse(localStorage.getItem('recipes'));
-                        renderResults (savedRecipes, goToPage);
+                        recipeCollection = JSON.parse(localStorage.getItem('recipes'));
+                        renderResults (recipeCollection, goToPage);
                 }
     
         });
@@ -605,7 +605,10 @@ var recipeController = (function() {
     
                 // 3. Add the item to the UI
                 UICtrl.addListItem(newItem);
-    
+
+                // renderResults (UICtrl.addListItem, page = 1, resPerPage = 2);
+
+
                 var delBtn = document.querySelectorAll('.btn_delete');
                 var delArr = Array.prototype.slice.call(delBtn);
                 delArr.forEach(function (cur) {
@@ -634,9 +637,20 @@ var recipeController = (function() {
             // 2. Delete the item from the UI
             UICtrl.deleteListItem(ID);
 
-
-            // savedRecipes = JSON.parse(localStorage.getItem('recipes'));
-            // renderResults (savedRecipes, page = 1, resPerPage = 2);
+                    function delItem() {
+                        var recipeContainer = document.querySelector('.recipe_container');
+                        while (recipeContainer.hasChildNodes()) {
+                            recipeContainer.removeChild(recipeContainer.firstChild);
+                        }
+                    }delItem();
+                    function delButton() {
+                        var recipePagination = document.querySelector('.recipe_pagination');
+                        while (recipePagination.hasChildNodes()) {
+                            recipePagination.removeChild(recipePagination.firstChild);
+                        }
+                    }delButton();
+            recipeCollection = JSON.parse(localStorage.getItem('recipes'));
+            renderResults (recipeCollection, page = 1, resPerPage = 2);
     
         };
         var ctrlEditItem = function(event) {
@@ -675,14 +689,14 @@ var recipeController = (function() {
                 }
             }delButton();
 
-            savedRecipes = JSON.parse(localStorage.getItem('recipes'));
-            renderResults (savedRecipes, page = 1, resPerPage = 2);
+            recipeCollection = JSON.parse(localStorage.getItem('recipes'));
+            renderResults (recipeCollection, page = 1, resPerPage = 2);
         };
     
         return {
             init: function() {
-                    var savedRecipes = JSON.parse(localStorage.getItem('recipes'));
-                    renderResults (savedRecipes, page = 1, resPerPage = 2);
+                    var recipeCollection = JSON.parse(localStorage.getItem('recipes'));
+                    renderResults (recipeCollection, page = 1, resPerPage = 2);
 
 
                 console.log('Application has started.');
