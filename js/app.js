@@ -274,7 +274,7 @@
                                 <ul class="ingredient_value"></ul>
                             </div>
                             <div>
-                                <p>METHOD</p>
+                                <p>HOW TO COOK</p>
                                 <p class="recipe_method">%process%</p>
                                 <div>
                                 <p class="date"></p>
@@ -316,7 +316,7 @@
                 overlay = document.getElementById('overlaySecond');
                 overlay.style.display = 'block';
     
-                html = '<div class="clearfix item_edit_form" id="%id%"><h4 class="recipe_value"><input id="save_input_name" value="%name%" class="form-control" type="text"/></h4><div class="recipe_ingredients"> <p>INGREDIENTS</p> <ul class="edit_ingredient_value"></ul></div><div><p>METHOD</p><p class="recipe_method"><textarea class="form-control" id="process" cols="45" rows="5">%process%</textarea></p><div><p class="date"></p></div><div class="btn_control"><input id="save" class="btn btn-light m-1" type="submit" value="Save"></div><p class="today">Published: %year%</p></div></div>';
+                html = '<div class="clearfix item_edit_form" id="%id%"><h4 class="recipe_value"><input id="save_input_name" value="%name%" class="form-control" type="text"/></h4><div class="recipe_ingredients"> <p>INGREDIENTS</p> <ul class="edit_ingredient_value"></ul></div><div><p>HOW TO COOK</p><p class="recipe_method"><textarea class="form-control" id="process" cols="45" rows="5">%process%</textarea></p><div><p class="date"></p></div><div class="btn_control"><input id="save" class="btn btn-light m-1" type="submit" value="Save"></div><p class="today">Published: %year%</p></div></div>';
     
     
                 // Replace the placeholder text with some actual data
