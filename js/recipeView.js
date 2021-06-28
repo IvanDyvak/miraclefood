@@ -17,11 +17,8 @@ const createIngredient = ingredient =>`
 	    <svg class="recipe__icon">
 	        <use href="img/icons.svg#icon-check"></use>
 	    </svg>
-	    <div class="recipe__count">${ingredient.count}</div>
-	    <div class="recipe__ingredient">
-	        <span class="recipe__unit">${ingredient.unit}</span>
-	        ${ingredient.ingredient}
-	    </div>
+	    <div class="recipe__count">${ingredient}</div>
+
 	</li>
 `;
 
