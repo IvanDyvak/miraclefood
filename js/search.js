@@ -276,7 +276,7 @@ const controlRecipe = async () =>{
 
 			const createIngredient = ingredient =>`
 				<li class="ingItem">
-					${ingredient.count} ${ingredient.unit} ${ingredient.ingredient}
+					${ingredient}
 				</li>
 			`;
 			const renderLikedRecipe = recipe =>{
@@ -291,7 +291,7 @@ const controlRecipe = async () =>{
 	</ul>
 	                        </div>
 	                        <div>
-	                            <p>METHOD</p>
+	                            <p>HOW TO COOK</p>
 	                            <p class="recipe_method">${recipe.process}</p>
 	                            <div>
 	                            <p class="date"></p>
@@ -311,6 +311,50 @@ const controlRecipe = async () =>{
 			}
 				renderLikedRecipe(newItem);
 				document.querySelector('.fa-heart').style.pointerEvents = "none";
+
+				// const renderResults = (recipeCollection, page = 1, resPerPage = 2) =>{
+    //             recipeCollection = JSON.parse(localStorage.getItem('recipes'));
+    //             const start = (page - 1) * resPerPage;
+    //             const end = page * resPerPage;
+    //             recipeCollection.slice(start, end).forEach(renderLikedRecipe(newItem));
+    
+    //             const delBtn = document.querySelectorAll('.btn_delete');
+    //             const delArr = Array.prototype.slice.call(delBtn);
+    //             delArr.forEach(function (cur) {
+    //                 cur.addEventListener("click", ctrlDeleteItem);
+    //             })
+    //             const editBtn = document.querySelectorAll('.fa-edit');
+    //             const editArr = Array.prototype.slice.call(editBtn);
+    //             editArr.forEach(function (cur) {
+    //                 cur.addEventListener("click", ctrlEditItem);
+    //             })
+    //             //render pagination
+    //             renderButtons (page, recipeCollection.length, resPerPage);
+    //     };
+      
+    //     document.querySelector(".recipe_pagination").addEventListener('click', e =>{
+    //             const btn = e.target.closest('.btn_inline');
+    //             if (btn) {
+    //                 const goToPage = parseInt(btn.dataset.goto, 10);
+
+    //                 function delItem() {
+    //                     var recipeContainer = document.querySelector('.recipe_container');
+    //                     while (recipeContainer.hasChildNodes()) {
+    //                         recipeContainer.removeChild(recipeContainer.firstChild);
+    //                     }
+    //                 }delItem();
+    //                 function delButton() {
+    //                     var recipePagination = document.querySelector('.recipe_pagination');
+    //                     while (recipePagination.hasChildNodes()) {
+    //                         recipePagination.removeChild(recipePagination.firstChild);
+    //                     }
+    //                 }delButton();
+
+    //                     recipeCollection = JSON.parse(localStorage.getItem('recipes'));
+    //                     renderResults (recipeCollection, goToPage);
+    //             }
+    
+    //     });
 		}
 
 		document.querySelector('.fa-heart').addEventListener('click', addLikedRecipe);
