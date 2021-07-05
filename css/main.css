@@ -512,8 +512,9 @@ input[type=text], input[type=password] {
     position: absolute;
     top: 30px;
     left: -250px;
-    color: red;
+    color: #0f7526;
     text-transform: none;
+    font-weight: 400;
 
   }
     .recipe__info:not(:last-child) {
@@ -593,7 +594,8 @@ input[type=text], input[type=password] {
     margin-top: .1rem; }
   .recipe__count {
     margin-right: .5rem;
-    flex: 0 0 auto; }
+    /*flex: 0 0 auto; */
+  }
   .recipe__directions {
     /*padding: 4rem;*/
     padding-bottom: 5rem;
@@ -1042,7 +1044,8 @@ input[type=text]::placeholder {
     margin: 2em;
     background: inherit;
 }
-#recipeList h3{
+#recipeList h3,
+#recipeList .collection_message{
     color: #e18516;
 }
 #btn3{
