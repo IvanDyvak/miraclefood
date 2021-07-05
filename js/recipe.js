@@ -71,6 +71,7 @@ export default class Recipe{
 
                 // Return the new element
                 return newItem;
+                // return recipeCollection;
 
 		} 
 	// getIngredients(){
@@ -93,8 +94,8 @@ export default class Recipe{
 		});
 		this.ingredients = newArr;
 		
-		const unitsLong = ['tablespoons', 'tablespoon', 'ounces', 'ounce', 'teaspoons', 'teaspoon', 'cups', 'pounds'];
-		const unitsShort = ['tbsp', 'tbsp','oz', 'oz', 'tsp', 'tsp', 'cup', 'pound'];
+		const unitsLong = ['tablespoons', 'tablespoon', 'Tablespoon', 'ounces', 'ounce', 'teaspoons', 'teaspoon', 'cups', 'pounds'];
+		const unitsShort = ['tbsp', 'tbsp','tbsp', 'oz', 'oz', 'tsp', 'tsp', 'cup', 'pound'];
 
 
 		const newIngredients = this.ingredients.map(el =>{
