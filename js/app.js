@@ -1,7 +1,7 @@
 
 // import Recipe from './recipe.js';
 
- var recipeController = (function() {
+ export var recipeController = (function() {
     // Creating object for recipes
     
     
@@ -131,7 +131,7 @@
     
     })();
     
-    var UIController = (function (){
+    export var UIController = (function (){
         // Creating list of ingredients
     
     
@@ -299,6 +299,8 @@
     
                     // Insert the HTML into the DOM
                     element.insertAdjacentHTML('afterbegin', newHtml);
+                    document.querySelector('.collection_message').hidden = true;
+
     
                 obj.ingredients.forEach(function (item){
                     var li = document.createElement("li");
@@ -371,8 +373,12 @@
             deleteListItem: function(selectorID) {
     
                 var el = document.getElementById(selectorID);
-                el.parentNode.removeChild(el);
-    
+                var parent = el.parentNode;
+                parent.removeChild(el);
+                console.log(parent.childNodes.length);
+                if(parent.childNodes.length == 1){
+                document.querySelector('.collection_message').hidden = false;
+                }
             },
     
     
@@ -412,7 +418,7 @@
     
     })();
     // GLOBAL APP CONTROLLER
-    var controller = (function(recipeCtrl, UICtrl) {
+   export var controller = (function(recipeCtrl, UICtrl) {
         var setupEventListeners = function() {
             document.getElementById('add_item').addEventListener('click', ctrlAddItem);
     
@@ -584,7 +590,7 @@
                         }
                     }delButton();
 
-                        recipeCollection = JSON.parse(localStorage.getItem('recipes'));
+                     const   recipeCollection = JSON.parse(localStorage.getItem('recipes'));
                         renderResults (recipeCollection, goToPage);
                 }
     
@@ -606,7 +612,7 @@
                 // 3. Add the item to the UI
                 UICtrl.addListItem(newItem);
 
-                // renderResults (UICtrl.addListItem, page = 1, resPerPage = 2);
+                // renderResults (UICtrl.addListItem(newItem), page = 1, resPerPage = 2);
 
 
                 var delBtn = document.querySelectorAll('.btn_delete');
@@ -649,8 +655,10 @@
                             recipePagination.removeChild(recipePagination.firstChild);
                         }
                     }delButton();
-            recipeCollection = JSON.parse(localStorage.getItem('recipes'));
-            renderResults (recipeCollection, page = 1, resPerPage = 2);
+            const recipeCollection = JSON.parse(localStorage.getItem('recipes'));
+            let page = 1;
+            let resPerPage = 2;
+            renderResults (recipeCollection, page, resPerPage);
     
         };
         var ctrlEditItem = function(event) {
@@ -689,14 +697,18 @@
                 }
             }delButton();
 
-            recipeCollection = JSON.parse(localStorage.getItem('recipes'));
-            renderResults (recipeCollection, page = 1, resPerPage = 2);
+            const recipeCollection = JSON.parse(localStorage.getItem('recipes'));
+            let page = 1;
+            let resPerPage = 2;
+            renderResults (recipeCollection, page, resPerPage);
         };
     
         return {
             init: function() {
                     var recipeCollection = JSON.parse(localStorage.getItem('recipes'));
-                    renderResults (recipeCollection, page = 1, resPerPage = 2);
+                    let page = 1;
+                    let resPerPage = 2;
+                    renderResults (recipeCollection, page, resPerPage);
 
 
                 console.log('Application has started.');
