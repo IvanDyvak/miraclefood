@@ -1,7 +1,7 @@
 
+// import Recipe from './recipe.js';
 
-
-var recipeController = (function() {
+ export var recipeController = (function() {
     // Creating object for recipes
     
     
@@ -55,9 +55,10 @@ var recipeController = (function() {
                 // Create new item
     
                 newItem = new Recipe(ID, name, ings, proc, year);
-    
+                
                 // Push it into our data structure
                 recipeCollection.push(newItem);
+
                 localStorage.setItem('recipes', JSON.stringify(recipeCollection));
                 // Return the new element
                 return newItem;
@@ -130,7 +131,7 @@ var recipeController = (function() {
     
     })();
     
-    var UIController = (function (){
+    export var UIController = (function (){
         // Creating list of ingredients
     
     
@@ -168,30 +169,36 @@ var recipeController = (function() {
     
     //Manipulating nav//
         window.onscroll = function() {myFunction()};
-    
-        function myFunction() {
-            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-                document.querySelector(".wrapper").style.top = "-30px";
-                document.querySelector(".logo").style.width = "130px";
-                document.querySelector(".logo").style.height = "35px";
-                document.querySelector(".logo").style.transform = "translateX(15%)";
-    
-            } else {
-                document.querySelector(".logo").style.width = "150px";
-                document.querySelector(".logo").style.height = "40px";
-                document.querySelector(".wrapper").style.top = "0px";
-                document.querySelector(".navbar").style.height = "auto";
-                document.querySelector(".logo").style.transform = "translateX(0)";
-    
-            }
+
+        const sticky = document.querySelector(".wrapper").offsetTop+100;
+
+            function myFunction() {
+        if (document.body.scrollTop > sticky || document.documentElement.scrollTop > sticky) {
+            document.querySelector(".wrapper").classList.add("sticky");
+            document.querySelector(".topLine").style.marginTop = "-30px";
+            document.querySelector("body").style.paddingTop = "97px";
+            document.querySelector(".logo").style.width = "130px";
+            document.querySelector(".logo").style.height = "35px";
+            document.querySelector(".logo").style.transform = "translateX(15%)";
+
+        } else {
+            document.querySelector(".logo").style.width = "150px";
+            document.querySelector(".logo").style.height = "40px";
+            document.querySelector(".wrapper").classList.remove("sticky");
+            document.querySelector("body").style.paddingTop = "0px";
+            document.querySelector(".topLine").style.marginTop = "0";
+            document.querySelector(".navbar").style.height = "auto";
+            document.querySelector(".logo").style.transform = "translateX(0)";
+
         }
+    }
     
         var loginSignIn = document.querySelector('.login_signin');
         var loginSignUp = document.querySelector('.login_signup');
         var navbarFormSignIn = document.querySelector('.navbar_form_sign_in');
         var navbarFormsignUp = document.querySelector('.navbar_form_sign_up');
         // var navbarForm = document.querySelector('.navbar_form');
-        var overlay = document.getElementById('overlay');
+        var overlay = document.getElementById('overlaySecond');
     
         document.onclick = function(e){
             if(e.target.id == 'overlay'){
@@ -261,13 +268,13 @@ var recipeController = (function() {
     
                 element = document.querySelector('.recipe_container');
     
-                html = `<div class="item clearfix" id="%id%">
+                html = `<div class="item_added clearfix" id="%id%">
                             <h4 class="recipe_value">%name%</h4>
                             <div class="recipe_ingredients"> <p>INGREDIENTS</p> 
                                 <ul class="ingredient_value"></ul>
                             </div>
                             <div>
-                                <p>METHOD</p>
+                                <p>HOW TO COOK</p>
                                 <p class="recipe_method">%process%</p>
                                 <div>
                                 <p class="date"></p>
@@ -292,6 +299,8 @@ var recipeController = (function() {
     
                     // Insert the HTML into the DOM
                     element.insertAdjacentHTML('afterbegin', newHtml);
+                    document.querySelector('.collection_message').hidden = true;
+
     
                 obj.ingredients.forEach(function (item){
                     var li = document.createElement("li");
@@ -309,7 +318,7 @@ var recipeController = (function() {
                 overlay = document.getElementById('overlaySecond');
                 overlay.style.display = 'block';
     
-                html = '<div class="item clearfix item_edit_form" id="%id%"><h4 class="recipe_value"><input id="save_input_name" value="%name%" class="form-control" type="text"/></h4><div class="recipe_ingredients"> <p>INGREDIENTS</p> <ul class="edit_ingredient_value"></ul></div><div><p>METHOD</p><p class="recipe_method"><textarea class="form-control" id="process" cols="45" rows="5">%process%</textarea></p><div><p class="date"></p></div><div class="btn_control"><input id="save" class="btn btn-light m-1" type="submit" value="Save"></div><p class="today">Published: %year%</p></div></div>';
+                html = '<div class="clearfix item_edit_form" id="%id%"><h4 class="recipe_value"><input id="save_input_name" value="%name%" class="form-control" type="text"/></h4><div class="recipe_ingredients"> <p>INGREDIENTS</p> <ul class="edit_ingredient_value"></ul></div><div><p>HOW TO COOK</p><p class="recipe_method"><textarea class="form-control" id="process" cols="45" rows="5">%process%</textarea></p><div><p class="date"></p></div><div class="btn_control"><input id="save" class="btn btn-light m-1" type="submit" value="Save"></div><p class="today">Published: %year%</p></div></div>';
     
     
                 // Replace the placeholder text with some actual data
@@ -364,8 +373,12 @@ var recipeController = (function() {
             deleteListItem: function(selectorID) {
     
                 var el = document.getElementById(selectorID);
-                el.parentNode.removeChild(el);
-    
+                var parent = el.parentNode;
+                parent.removeChild(el);
+                console.log(parent.childNodes.length);
+                if(parent.childNodes.length == 1){
+                document.querySelector('.collection_message').hidden = false;
+                }
             },
     
     
@@ -405,15 +418,15 @@ var recipeController = (function() {
     
     })();
     // GLOBAL APP CONTROLLER
-    var controller = (function(recipeCtrl, UICtrl) {
+   export var controller = (function(recipeCtrl, UICtrl) {
         var setupEventListeners = function() {
             document.getElementById('add_item').addEventListener('click', ctrlAddItem);
     
-            document.addEventListener('keypress', function(event) {
-                if (event.keyCode === 13 || event.which === 13) {
-                    ctrlAddItem();
-                }
-            });
+            // document.addEventListener('keypress', function(event) {
+            //     if (event.keyCode === 13 || event.which === 13) {
+            //         ctrlAddItem();
+            //     }
+            // });
     
         };
     
@@ -442,7 +455,7 @@ var recipeController = (function() {
                         var tip = parseInt(randomRange(0, data.length - 1));
                         localStorage.setItem('currentTip', JSON.stringify(tip));
                         console.log(localStorage.getItem('currentTip'));
-    
+                            var i;
                         for (i = 0; i < data.length; i++){
                             var thisTip = data[tip].description;
                             document.getElementById('tip_text').innerText = thisTip;
@@ -454,7 +467,8 @@ var recipeController = (function() {
                 fetch('json/tips.json')
                     .then(response => response.json())
                     .then(data => {
-                        var currentTip = JSON.parse(localStorage.getItem('currentTip'))
+                        var currentTip = JSON.parse(localStorage.getItem('currentTip'));
+                        var i;
                         for (i = 0; i < data.length; i++){
                             var thisTip = data[currentTip].description;
                             document.getElementById('tip_text').innerText = thisTip;
@@ -465,15 +479,41 @@ var recipeController = (function() {
     
         });
         /**********************************************************************/
-        //    ***********CREATING SEARCH LOADER*****************
-        //         document.getElementById('search_btn').addEventListener('click', function(){
-        //             var searchOverlay = document.getElementById('search_overlay').style.display = 'block';
+        //    ***********Manipulating with elements onscroll*****************
+
         //             setTimeout(function (){
         //                 document.getElementById('search_overlay').style.display = 'none';
         //             }, 10000);
         // });
-    
-    
+    const getCoords = (elem) =>{
+        let box = elem.getBoundingClientRect();
+
+          return {
+            top: box.top + pageYOffset,
+          };
+
+} 
+    window.addEventListener('scroll', function() {
+        const ribbon = document.querySelector('.text');
+        const ribbonView = getCoords(ribbon);
+
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+        if(scrollTop >= 300){
+            let changeText = setTimeout(function (){
+                ribbon.innerText = 'Check our updates daily';
+                ribbon.style.background = '#9b2';
+            },2000);
+        }else{
+            setTimeout(function (){
+                ribbon.innerText = 'Tip Of The Day';
+                ribbon.style.background = '#e8e856';
+            },2000);
+        };
+        // console.log(scrollTop);
+
+    });
+
         // ************************************************************
             const createButton = (page, type) => {
               // 'type' will be either 'prev' or 'next'
@@ -512,11 +552,11 @@ var recipeController = (function() {
     
     
     
-        const renderResults = (savedRecipes, page = 1, resPerPage = 2) =>{
-                savedRecipes = JSON.parse(localStorage.getItem('recipes'));
+     const renderResults = (recipeCollection, page = 1, resPerPage = 2) =>{
+                recipeCollection = JSON.parse(localStorage.getItem('recipes'));
                 const start = (page - 1) * resPerPage;
                 const end = page * resPerPage;
-                savedRecipes.slice(start, end).forEach(UICtrl.addListItem);
+                recipeCollection.slice(start, end).forEach(UICtrl.addListItem);
     
                 var delBtn = document.querySelectorAll('.btn_delete');
                 var delArr = Array.prototype.slice.call(delBtn);
@@ -529,7 +569,7 @@ var recipeController = (function() {
                     cur.addEventListener("click", ctrlEditItem);
                 })
                 //render pagination
-                renderButtons (page, savedRecipes.length, resPerPage);
+                renderButtons (page, recipeCollection.length, resPerPage);
         };
       
         document.querySelector(".recipe_pagination").addEventListener('click', e =>{
@@ -550,8 +590,8 @@ var recipeController = (function() {
                         }
                     }delButton();
 
-                        savedRecipes = JSON.parse(localStorage.getItem('recipes'));
-                        renderResults (savedRecipes, goToPage);
+                     const   recipeCollection = JSON.parse(localStorage.getItem('recipes'));
+                        renderResults (recipeCollection, goToPage);
                 }
     
         });
@@ -571,7 +611,10 @@ var recipeController = (function() {
     
                 // 3. Add the item to the UI
                 UICtrl.addListItem(newItem);
-    
+
+                // renderResults (UICtrl.addListItem(newItem), page = 1, resPerPage = 2);
+
+
                 var delBtn = document.querySelectorAll('.btn_delete');
                 var delArr = Array.prototype.slice.call(delBtn);
                 delArr.forEach(function (cur) {
@@ -600,9 +643,22 @@ var recipeController = (function() {
             // 2. Delete the item from the UI
             UICtrl.deleteListItem(ID);
 
-
-            // savedRecipes = JSON.parse(localStorage.getItem('recipes'));
-            // renderResults (savedRecipes, page = 1, resPerPage = 2);
+                    function delItem() {
+                        var recipeContainer = document.querySelector('.recipe_container');
+                        while (recipeContainer.hasChildNodes()) {
+                            recipeContainer.removeChild(recipeContainer.firstChild);
+                        }
+                    }delItem();
+                    function delButton() {
+                        var recipePagination = document.querySelector('.recipe_pagination');
+                        while (recipePagination.hasChildNodes()) {
+                            recipePagination.removeChild(recipePagination.firstChild);
+                        }
+                    }delButton();
+            const recipeCollection = JSON.parse(localStorage.getItem('recipes'));
+            let page = 1;
+            let resPerPage = 2;
+            renderResults (recipeCollection, page, resPerPage);
     
         };
         var ctrlEditItem = function(event) {
@@ -641,14 +697,18 @@ var recipeController = (function() {
                 }
             }delButton();
 
-            savedRecipes = JSON.parse(localStorage.getItem('recipes'));
-            renderResults (savedRecipes, page = 1, resPerPage = 2);
+            const recipeCollection = JSON.parse(localStorage.getItem('recipes'));
+            let page = 1;
+            let resPerPage = 2;
+            renderResults (recipeCollection, page, resPerPage);
         };
     
         return {
             init: function() {
-                    savedRecipes = JSON.parse(localStorage.getItem('recipes'));
-                    renderResults (savedRecipes, page = 1, resPerPage = 2);
+                    var recipeCollection = JSON.parse(localStorage.getItem('recipes'));
+                    let page = 1;
+                    let resPerPage = 2;
+                    renderResults (recipeCollection, page, resPerPage);
 
 
                 console.log('Application has started.');

@@ -1,6 +1,8 @@
 // import axios from 'axios';
 import {app_id, key} from './config.js';
 import Recipe from './recipe.js';
+import * as recipeView from './recipeView.js';
+import * as app from './app.js';
 
 class Search{
 	constructor(query){
@@ -60,7 +62,7 @@ const controlSearch = async () =>{
 		clearLoader();
 		renderRecipes(state.search.result);
 	}catch(err){
-		alert('Something went wrong');
+		alert('Please type in your meal');
 		clearLoader();
 	}
 
@@ -69,12 +71,13 @@ const controlSearch = async () =>{
 
 
 
-const elements = {
+export const elements = {
 	searchForm: document.querySelector('.search'),
 	searchInput: document.querySelector('.search__field'),
 	searchResList: document.querySelector('.results_list'),
 	searchRes: document.querySelector('.results'),
-	searchResPages: document.querySelector('.results_pages')
+	searchResPages: document.querySelector('.results_pages'),
+	recipe: document.querySelector('.recipe')
 };
 const elementStrings = {
 	loader: 'loader'
@@ -117,6 +120,20 @@ const limitRecipeTitle = (title, limit = 17) =>{
 	return title;
 }
 
+const limitRecipeSummary = (summary, limit = 100) =>{
+	const newSummary = [];
+	if(summary.length > limit){
+		summary.split(' ').reduce((acc, cur) =>{
+			if(acc + cur.length <= limit){
+				newSummary.push(cur);
+			}
+			return acc + cur.length;
+		}, 0)
+		// return the result		
+		return `${newSummary.join(' ')}...`;
+	}
+}
+
 const renderRecipe = (recipe) =>{
 	const markup = `
         <li>
@@ -131,6 +148,7 @@ const renderRecipe = (recipe) =>{
 				  <p class="results__cookingTime"><i class="far fa-clock"></i> ${recipe.readyInMinutes} min</p>
 				  <p class="results__cookingTime">Servings: ${recipe.servings}</p>
 				</div>
+				<p class="results__summary">${limitRecipeSummary(recipe.summary)}</p>
             </div>
           </a>
         </li>		
@@ -223,23 +241,215 @@ const controlRecipe = async () =>{
 	console.log(id);
 	if(id) {
 		// Prepare UI for changes
-
+		recipeView.clearRecipe();
+		// renderLoader(elements.recipe);
 		// Create new recipe object
 		state.recipe = new Recipe(id);
-		window.r = state.recipe;
+		//window.r = state.recipe;
 
 		
 		try{
 
-		// Get recipe data
+		// Get recipe data and parse ingredients
 		await state.recipe.getRecipe();
+		state.recipe.parseIngredients();
 
 		// Render recipe
+		// clearLoader();
 
-		console.log(state.recipe);
+		recipeView.renderRecipe(state.recipe);
+
+		//Adding Liked recipe to the collection
+
+		const addLikedRecipe = () =>{
+			  const heart = document.getElementById('heart');
+			  heart.classList.remove("far");
+			  heart.classList.add("fas");
+
+			  setTimeout(function () {
+				  const addMessage = document.querySelector('.recipe__info-message');
+				  addMessage.hidden = false;
+			  }, 1500);
+
+
+			const newItem = state.recipe.likedRecipe();
+
+			// state.recipe.likedRecipe();
+
+			const createIngredient = ingredient =>`
+				<li class="ingItem">
+					${ingredient}
+				</li>
+			`;
+			const renderLikedRecipe = recipe =>{
+				const  element = document.querySelector('.recipe_container');
+
+				const markup = `
+						<div class="item_added clearfix" id="${recipe.id}">
+	                        <h4 class="recipe_value">${recipe.name}</h4>
+	                        <div class="recipe_ingredients"> <p>INGREDIENTS</p> 
+	                            <ul class="ingredient_value">
+		                        	${recipe.ingredients.map(el => createIngredient(el)).join('')}
+								</ul>
+	                        </div>
+	                        <div>
+	                            <p>HOW TO COOK</p>
+	                            <p class="recipe_method">${recipe.process}</p>
+	                            <div>
+	                            <p class="date"></p>
+	                            </div>
+	                            <div class="btn_control">                                        <button class="btn btn-info" title="Edit post">
+	                                    <i class="far fa-edit"></i>
+	                                </button>
+	                                <button class="btn  btn-danger" id="" title="Delete post">
+	                                    <i class="far fa-times-circle btn_delete"></i>
+	                                </button>
+	                            </div>
+	                        <p class="today">Published: ${recipe.year}</p>
+	                        </div>
+	                    </div>
+				`
+				        element.insertAdjacentHTML('afterbegin', markup);
+			}
+				renderLikedRecipe(newItem);
+	            document.querySelector('.collection_message').hidden = true;
+				document.querySelector('.fa-heart').style.pointerEvents = "none";
+
+		         const delBtn = document.querySelectorAll('.btn_delete');
+                const delArr = Array.prototype.slice.call(delBtn);
+                delArr.forEach(function (cur) {
+                    cur.addEventListener("click", ctrlDeleteItem);
+                })
+                const editBtn = document.querySelectorAll('.fa-edit');
+                const editArr = Array.prototype.slice.call(editBtn);
+                editArr.forEach(function (cur) {
+                    cur.addEventListener("click", ctrlEditItem);
+                })
+
+
+            var ctrlDeleteItem = function(event) {
+            var ID;
+                        console.log('clicked');
+
+            ID = event.target.parentNode.parentNode.parentNode.parentNode.id;
+    
+            // 1. delete the item from the data structure
+            recipeCtrl.deleteItem(ID);
+    
+    
+            // 2. Delete the item from the UI
+            UICtrl.deleteListItem(ID);
+
+                    function delItem() {
+                        var recipeContainer = document.querySelector('.recipe_container');
+                        while (recipeContainer.hasChildNodes()) {
+                            recipeContainer.removeChild(recipeContainer.firstChild);
+                        }
+                    }delItem();
+                    function delButton() {
+                        var recipePagination = document.querySelector('.recipe_pagination');
+                        while (recipePagination.hasChildNodes()) {
+                            recipePagination.removeChild(recipePagination.firstChild);
+                        }
+                    }delButton();
+            const recipeCollection = JSON.parse(localStorage.getItem('recipes'));
+            let page = 1;
+            let resPerPage = 2;
+            renderResults (recipeCollection, page, resPerPage);
+    
+        };
+             var ctrlEditItem = function(event) {
+    
+            var ID, newItem;
+    
+            ID = event.target.parentNode.parentNode.parentNode.parentNode.id;
+            console.log(ID);
+            newItem = recipeCtrl.editItem(ID);
+    
+            UICtrl.editListItem(newItem);
+    
+            document.getElementById('save').addEventListener('click', saveItem);
+        };
+    
+        var saveItem = function (){
+    
+            var input = UICtrl.getSaveInput();
+            recipeCtrl.addSaveItem(input.id, input.name, input.ingredients, input.process);
+    
+            function delItem() {
+                var recipeContainer = document.querySelector('.recipe_container');
+                while (recipeContainer.hasChildNodes()) {
+                    recipeContainer.removeChild(recipeContainer.firstChild);
+                }
+            }delItem();
+    
+            document.getElementById('overlaySecond').style.display = 'none';
+            var itemEditForm = document.querySelector('.item_edit_form');
+            itemEditForm.parentNode.removeChild(itemEditForm);
+
+            function delButton() {
+                var recipePagination = document.querySelector('.recipe_pagination');
+                while (recipePagination.hasChildNodes()) {
+                recipePagination.removeChild(recipePagination.firstChild);
+                }
+            }delButton();
+
+            const recipeCollection = JSON.parse(localStorage.getItem('recipes'));
+            let page = 1;
+            let resPerPage = 2;
+            renderResults (recipeCollection, page, resPerPage);
+        };
+
+		// const renderResults = (recipeCollection, page = 1, resPerPage = 2) =>{
+  //               recipeCollection = JSON.parse(localStorage.getItem('recipes'));
+  //               const start = (page - 1) * resPerPage;
+  //               const end = page * resPerPage;
+  //               recipeCollection.slice(start, end).forEach(renderLikedRecipe);
+    
+  //               const delBtn = document.querySelectorAll('.btn_delete');
+  //               const delArr = Array.prototype.slice.call(delBtn);
+  //               delArr.forEach(function (cur) {
+  //                   cur.addEventListener("click", ctrlDeleteItem);
+  //               })
+  //               const editBtn = document.querySelectorAll('.fa-edit');
+  //               const editArr = Array.prototype.slice.call(editBtn);
+  //               editArr.forEach(function (cur) {
+  //                   cur.addEventListener("click", ctrlEditItem);
+  //               })
+  //               //render pagination
+  //               renderButtons (page, recipeCollection.length, resPerPage);
+  //       };
+      
+        document.querySelector(".recipe_pagination").addEventListener('click', e =>{
+                const btn = e.target.closest('.btn_inline');
+                if (btn) {
+                    const goToPage = parseInt(btn.dataset.goto, 10);
+
+                    function delItem() {
+                        var recipeContainer = document.querySelector('.recipe_container');
+                        while (recipeContainer.hasChildNodes()) {
+                            recipeContainer.removeChild(recipeContainer.firstChild);
+                        }
+                    }delItem();
+                    function delButton() {
+                        var recipePagination = document.querySelector('.recipe_pagination');
+                        while (recipePagination.hasChildNodes()) {
+                            recipePagination.removeChild(recipePagination.firstChild);
+                        }
+                    }delButton();
+
+                        recipeCollection = JSON.parse(localStorage.getItem('recipes'));
+                        renderResults (recipeCollection, goToPage);
+                }
+    
+        });
+		}
+
+		document.querySelector('.fa-heart').addEventListener('click', addLikedRecipe);
+
 		
 		}catch(error){
-			alert('Error processing recipe');
+			alert('Error processing recipe. Please click again');
 		}
 	}
 };
@@ -247,3 +457,4 @@ const controlRecipe = async () =>{
 // window.addEventListener('hashchange', controlRecipe);
 // window.addEventListener('load', controlRecipe);
 ['hashchange', 'load'].forEach(event => window.addEventListener(event, controlRecipe));
+
