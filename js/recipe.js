@@ -41,9 +41,7 @@ export default class Recipe{
 		likedRecipe (){
 			   let newItem, ID, yearOfPosted, now, months, month, yearPub, year;
 
-            const recipeCollection = localStorage.getItem('recipes')
-                ? JSON.parse(localStorage.getItem('recipes'))
-                : [];
+            const recipeCollection = JSON.parse(localStorage.getItem('recipes'));
 
 
               function randomRange(min, max) {

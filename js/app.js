@@ -28,9 +28,7 @@
             alert("Sorry, your browser does not support Web Storage...");
         }
     
-    
-        //////////////////////////////
-    
+        
         return {
             addItem: function(name, ings, proc) {
                 var newItem, ID, yearOfPosted, now, months, month, yearPub, year;

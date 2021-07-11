@@ -2,7 +2,7 @@
 import {app_id, key} from './config.js';
 import Recipe from './recipe.js';
 import * as recipeView from './recipeView.js';
-import * as app from './app.js';
+// import * as app from './app.js';
 
 class Search{
 	constructor(query){
