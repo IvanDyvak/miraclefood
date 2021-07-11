@@ -301,7 +301,7 @@ const controlRecipe = async () =>{
 	                            <div class="btn_control">                                        <button class="btn btn-info" title="Edit post">
 	                                    <i class="far fa-edit"></i>
 	                                </button>
-	                                <button class="btn  btn-danger" id="" title="Delete post">
+	                                <button class="btn btn-danger" title="Delete post">
 	                                    <i class="far fa-times-circle btn_delete"></i>
 	                                </button>
 	                            </div>
@@ -309,13 +309,14 @@ const controlRecipe = async () =>{
 	                        </div>
 	                    </div>
 				`
-				        element.insertAdjacentHTML('afterbegin', markup);
+				element.insertAdjacentHTML('afterbegin', markup);
+
 			}
 				renderLikedRecipe(newItem);
 	            document.querySelector('.collection_message').hidden = true;
 				document.querySelector('.fa-heart').style.pointerEvents = "none";
 
-		         const delBtn = document.querySelectorAll('.btn_delete');
+				const delBtn = document.querySelectorAll('.btn_delete');
                 const delArr = Array.prototype.slice.call(delBtn);
                 delArr.forEach(function (cur) {
                     cur.addEventListener("click", ctrlDeleteItem);
@@ -326,10 +327,8 @@ const controlRecipe = async () =>{
                     cur.addEventListener("click", ctrlEditItem);
                 })
 
-
             var ctrlDeleteItem = function(event) {
             var ID;
-                        console.log('clicked');
 
             ID = event.target.parentNode.parentNode.parentNode.parentNode.id;
     
@@ -361,6 +360,8 @@ const controlRecipe = async () =>{
              var ctrlEditItem = function(event) {
     
             var ID, newItem;
+                                    console.log('clicked');
+
     
             ID = event.target.parentNode.parentNode.parentNode.parentNode.id;
             console.log(ID);

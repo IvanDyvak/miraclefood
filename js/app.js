@@ -1,7 +1,7 @@
 
 // import Recipe from './recipe.js';
 
- export var recipeController = (function() {
+  var recipeController = (function() {
     // Creating object for recipes
     
     
@@ -131,7 +131,7 @@
     
     })();
     
-    export var UIController = (function (){
+     var UIController = (function (){
         // Creating list of ingredients
     
     
@@ -418,7 +418,7 @@
     
     })();
     // GLOBAL APP CONTROLLER
-   export var controller = (function(recipeCtrl, UICtrl) {
+    var controller = (function(recipeCtrl, UICtrl) {
         var setupEventListeners = function() {
             document.getElementById('add_item').addEventListener('click', ctrlAddItem);
     

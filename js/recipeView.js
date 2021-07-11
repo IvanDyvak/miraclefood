@@ -1,9 +1,9 @@
 import {elements} from './search.js';
 
 export const clearRecipe = () =>{
-	                document.onclick = function(e){
+                    document.onclick = function(e){
                     if(e.target.id == 'overlaySecond'){
-                    	overlaySecond.innerHTML = '';
+                        overlaySecond.innerHTML = '';
                         overlaySecond.style.display = 'none';
                     }
                     if(e.target === elements.recipe){
@@ -13,18 +13,18 @@ export const clearRecipe = () =>{
 };
 // elements.recipe.innerHTML = '';
 const createIngredient = ingredient =>`
-	<li class="recipe__item">
-	    <svg class="recipe__icon">
-	        <use href="img/icons.svg#icon-check"></use>
-	    </svg>
-	    <div class="recipe__count">${ingredient}</div>
+    <li class="recipe__item">
+        <svg class="recipe__icon">
+            <use href="img/icons.svg#icon-check"></use>
+        </svg>
+        <div class="recipe__count">${ingredient}</div>
 
-	</li>
+    </li>
 `;
 
 export const renderRecipe = recipe =>{
-	const markup = `
-	<div class="recipe">
+    const markup = `
+    <div class="recipe">
         <figure class="recipe__fig">
             <img src="${recipe.img}" alt="${recipe.title}" class="recipe__img">
             <h1 class="recipe__title">
@@ -60,7 +60,7 @@ export const renderRecipe = recipe =>{
 
         <div class="recipe__ingredients">
             <ul class="recipe__ingredient-list">
-            	${recipe.ingredients.map(el => createIngredient(el)).join('')}
+                ${recipe.ingredients.map(el => createIngredient(el)).join('')}
             </ul>
 
         </div>
@@ -78,12 +78,12 @@ export const renderRecipe = recipe =>{
             </a>
         </div>
     </div>        
-    	`;
+        `;
 
-    	const overlay = document.getElementById('overlaySecond');
+        const overlay = document.getElementById('overlaySecond');
         overlay.style.display = 'block';
         overlay.insertAdjacentHTML('afterbegin', markup);
         overlay.offsetTop == 0; 
-    	
+        
 }
 // elements.recipe.insertAdjacentHTML('afterbegin', markup);
